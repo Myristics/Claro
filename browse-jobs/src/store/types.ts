@@ -59,6 +59,7 @@ export interface Job {
   title: string;
   company: string;
   companyLogoInitials: string;
+  companyColor: string;
   type: 'Full-time' | 'Part-time' | 'Contract' | 'Freelance';
   location: string;
   workMode: 'On-site' | 'Remote' | 'Hybrid';

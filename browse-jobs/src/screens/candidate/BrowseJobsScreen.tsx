@@ -232,7 +232,10 @@ function JobCard({ job }: { job: Job }) {
       {/* ── Header: logo + title + "View details" ── */}
       <div className={styles.cardHeader}>
         <div className={styles.cardHeaderLeft}>
-          <div className={styles.logoContainer}>
+          <div
+            className={styles.logoContainer}
+            style={{ background: job.companyColor, borderColor: job.companyColor }}
+          >
             <span className={styles.logoInitials}>{job.companyLogoInitials}</span>
           </div>
           <div className={styles.titleContainer}>
