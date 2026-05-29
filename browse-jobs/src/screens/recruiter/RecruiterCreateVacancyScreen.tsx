@@ -1420,8 +1420,8 @@ export default function RecruiterCreateVacancyScreen() {
     form.requirements.trim()
   );
 
-  // Progress bar fill
-  const fillPercent = ((step + 1) / 4) * 100;
+  // Progress bar fill — starts at 0%, reaches 100% on the review step (step 3)
+  const fillPercent = (step / 3) * 100;
 
   function handleSaveDraft() {
     setShowExitModal(false);
@@ -1456,26 +1456,28 @@ export default function RecruiterCreateVacancyScreen() {
         </button>
       </header>
 
-      {/* ── Progress bar ── */}
-      <div className={styles.progressArea}>
-        <div className={styles.progressMeta}>
-          <span className={styles.progressStep}>
-            Step {step + 1} of 4
-          </span>
-          <span className={styles.progressNext}>
-            {NEXT_LABELS[step]}
-          </span>
-        </div>
-        <div className={styles.progressTrack}>
-          <div
-            className={styles.progressFill}
-            style={{ width: `${fillPercent}%` }}
-          />
-        </div>
-      </div>
-
       {/* ── Scrollable content ── */}
       <div className={styles.scrollArea}>
+        <div className={step === 3 ? styles.formWrapperWide : styles.formWrapper}>
+
+          {/* Progress bar — above the card, scrolls with content */}
+          <div className={styles.progressArea}>
+            <div className={styles.progressMeta}>
+              <span className={styles.progressStep}>
+                Step {step + 1} of 4
+              </span>
+              <span className={styles.progressNext}>
+                {NEXT_LABELS[step]}
+              </span>
+            </div>
+            <div className={styles.progressTrack}>
+              <div
+                className={styles.progressFill}
+                style={{ width: `${fillPercent}%` }}
+              />
+            </div>
+          </div>
+
         {step < 4 && (
           <div
             className={`${styles.card} ${
@@ -1545,6 +1547,7 @@ export default function RecruiterCreateVacancyScreen() {
             )}
           </div>
         )}
+        </div>{/* end formWrapper */}
       </div>
 
       {/* ── FAB ── */}

@@ -62,11 +62,15 @@
   flex: 1;
   overflow-y: auto;
   padding: 32px 24px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .inner {
   max-width: 600px;
-  margin: 0 auto;
+  width: 100%;
+  margin: auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
