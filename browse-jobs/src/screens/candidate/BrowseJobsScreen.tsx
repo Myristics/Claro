@@ -11,7 +11,7 @@
  *  filter-empty  — active filters return no results
  */
 
-import { useState, useMemo, useRef, useEffect } from 'react';
+import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import {
   IconSearch,
@@ -26,6 +26,8 @@ import {
   IconClipboard,
   IconArrowRight,
   IconSortDescending,
+  IconChevronLeft,
+  IconChevronRight,
 } from '@tabler/icons-react';
 import { JOBS } from '../../data/mockData';
 import { Skeleton } from '../../components/ds';
@@ -33,6 +35,8 @@ import type { AssessmentType, Job } from '../../store/types';
 import styles from './BrowseJobsScreen.module.css';
 
 // ── Constants ──────────────────────────────────────────────────────────────
+
+const PAGE_SIZE = 10;
 
 const ROLE_OPTIONS = ['All', 'Full-time', 'Part-time', 'Contract', 'Freelance'] as const;
 const EXPERIENCE_OPTIONS = ['All', 'Entry-level', 'Mid-level', 'Senior'] as const;
@@ -295,6 +299,72 @@ function JobCard({ job }: { job: Job }) {
   );
 }
 
+// ── Pagination component ───────────────────────────────────────────────────
+
+type PaginationProps = {
+  page: number;
+  totalPages: number;
+  total: number;
+  onPage: (p: number) => void;
+};
+
+function Pagination({ page, totalPages, total, onPage }: PaginationProps) {
+  const from = (page - 1) * PAGE_SIZE + 1;
+  const to   = Math.min(page * PAGE_SIZE, total);
+
+  // Build page number list: always show first, last, current ±1, with ellipsis
+  const pages: (number | '…')[] = [];
+  for (let p = 1; p <= totalPages; p++) {
+    if (p === 1 || p === totalPages || (p >= page - 1 && p <= page + 1)) {
+      pages.push(p);
+    } else if (pages[pages.length - 1] !== '…') {
+      pages.push('…');
+    }
+  }
+
+  return (
+    <div className={styles.pagination}>
+      <span className={styles.paginationCount}>
+        Showing {from}–{to} of {total} position{total !== 1 ? 's' : ''}
+      </span>
+      <div className={styles.paginationControls}>
+        <button
+          className={styles.pageBtn}
+          onClick={() => onPage(page - 1)}
+          disabled={page === 1}
+          aria-label="Previous page"
+        >
+          <IconChevronLeft size={15} />
+        </button>
+
+        {pages.map((p, i) =>
+          p === '…' ? (
+            <span key={`ellipsis-${i}`} className={styles.pageEllipsis}>…</span>
+          ) : (
+            <button
+              key={p}
+              className={`${styles.pageBtn} ${p === page ? styles.pageBtnActive : ''}`}
+              onClick={() => onPage(p)}
+              aria-current={p === page ? 'page' : undefined}
+            >
+              {p}
+            </button>
+          )
+        )}
+
+        <button
+          className={styles.pageBtn}
+          onClick={() => onPage(page + 1)}
+          disabled={page === totalPages}
+          aria-label="Next page"
+        >
+          <IconChevronRight size={15} />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ── Main component ─────────────────────────────────────────────────────────
 
 type PageStatus = 'default' | 'loading' | 'error';
@@ -312,6 +382,7 @@ export default function BrowseJobsScreen() {
   const [industry,   setIndustry]   = useState('All');
   const [experience, setExperience] = useState('All');
   const [sortBy,     setSortBy]     = useState('Relevance');
+  const [page,       setPage]       = useState(1);
 
   const LOCATION_OPTIONS = useMemo(getLocationOptions, []);
   const INDUSTRY_OPTIONS = useMemo(getIndustryOptions, []);
@@ -338,12 +409,28 @@ export default function BrowseJobsScreen() {
     return list;
   }, [search, role, location, industry, experience, sortBy, pageStatus]);
 
+  const totalPages = Math.max(1, Math.ceil(filteredJobs.length / PAGE_SIZE));
+  const safePage   = Math.min(page, totalPages);
+
+  // Reset to page 1 whenever filters or search change
+  useEffect(() => { setPage(1); }, [search, role, location, industry, experience, sortBy]);
+
+  const pageJobs = useMemo(
+    () => filteredJobs.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE),
+    [filteredJobs, safePage],
+  );
+
+  const goToPage = useCallback((p: number) => {
+    setPage(p);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   // Chunk into rows of 2 for the Figma 2-col grid
   const rows = useMemo(() => {
     const out: Job[][] = [];
-    for (let i = 0; i < filteredJobs.length; i += 2) out.push(filteredJobs.slice(i, i + 2));
+    for (let i = 0; i < pageJobs.length; i += 2) out.push(pageJobs.slice(i, i + 2));
     return out;
-  }, [filteredJobs]);
+  }, [pageJobs]);
 
   function clearAll() {
     setSearch('');
@@ -475,15 +562,25 @@ export default function BrowseJobsScreen() {
 
     // ── Default — 2-col job grid ─────────────────────────────
     return (
-      <div className={styles.jobListings}>
-        {rows.map((row, i) => (
-          <div key={i} className={styles.jobRow}>
-            {row.map(job => <JobCard key={job.id} job={job} />)}
-            {/* Fill empty slot on odd-count results */}
-            {row.length === 1 && <div className={styles.jobRowSpacer} />}
-          </div>
-        ))}
-      </div>
+      <>
+        <div className={styles.jobListings}>
+          {rows.map((row, i) => (
+            <div key={i} className={styles.jobRow}>
+              {row.map(job => <JobCard key={job.id} job={job} />)}
+              {/* Fill empty slot on odd-count results */}
+              {row.length === 1 && <div className={styles.jobRowSpacer} />}
+            </div>
+          ))}
+        </div>
+        {totalPages > 1 && (
+          <Pagination
+            page={safePage}
+            totalPages={totalPages}
+            total={filteredJobs.length}
+            onPage={goToPage}
+          />
+        )}
+      </>
     );
   }
 
