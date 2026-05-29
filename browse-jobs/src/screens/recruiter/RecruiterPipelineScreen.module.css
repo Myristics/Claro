@@ -1,0 +1,721 @@
+/* ── Page shell ──────────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--page-bg);
+  position: relative;
+}
+
+/* ── Page header ─────────────────────────────────────────────── */
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 48px 24px 0;
+  flex-shrink: 0;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pageTitle {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 28px;
+  margin: 0;
+}
+
+.pageSubtitle {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  margin: 0;
+  line-height: 20px;
+}
+
+/* ── Filter bar ──────────────────────────────────────────────── */
+.filterBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 24px 12px;
+  flex-shrink: 0;
+}
+
+.searchWrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 500px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(0, 5, 29, 0.45);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  height: 34px;
+  padding: 0 12px 0 30px;
+  border: 1px solid rgba(0, 8, 48, 0.27);
+  border-radius: 6px;
+  background: #ffffff;
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.12s;
+}
+
+.searchInput::placeholder {
+  color: rgba(0, 5, 29, 0.45);
+}
+
+.searchInput:focus {
+  border-color: #01959f;
+}
+
+.searchInput:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ── Chip row ────────────────────────────────────────────────── */
+.chipRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 6, 46, 0.18);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.1s, color 0.1s, border-color 0.1s;
+  gap: 4px;
+}
+
+.chip:hover:not(:disabled) {
+  background: var(--page-bg);
+  color: var(--text-primary);
+}
+
+.chip:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.chipActive {
+  background: rgba(0, 177, 177, 0.07);
+  border-color: #01959f;
+  color: #01959f;
+  font-weight: 500;
+}
+
+/* ── Dropdown ────────────────────────────────────────────────── */
+.dropdownWrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 180px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownItem {
+  width: 100%;
+  text-align: left;
+  padding: 9px 14px;
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.dropdownItem:hover {
+  background: rgba(0, 0, 47, 0.04);
+}
+
+.dropdownItemActive {
+  color: #01959f;
+  font-weight: 500;
+}
+
+/* ── Table container ─────────────────────────────────────────── */
+.tableWrap {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 24px 24px;
+}
+
+.tableCard {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ── Table head ──────────────────────────────────────────────── */
+.tableHead {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(0, 0, 47, 0.1);
+  background: rgba(0, 0, 47, 0.02);
+  height: 40px;
+}
+
+.tableHeaderCell {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0, 7, 20, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0 8px;
+  flex-shrink: 0;
+}
+
+/* ── Table rows ──────────────────────────────────────────────── */
+.tableRow {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  min-height: 64px;
+  border-bottom: 1px solid rgba(0, 0, 47, 0.08);
+  transition: background 0.1s;
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableRow:hover {
+  background: rgba(0, 0, 47, 0.02);
+}
+
+.tableCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 8px;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+/* ── Column widths ───────────────────────────────────────────── */
+.colCandidate  { flex: 1; min-width: 0; }
+.colAppliedFor { flex: 1; min-width: 0; }
+.colStatus     { width: 160px; }
+.colActivity   { flex: 1; min-width: 0; }
+.colAction     { width: 48px; align-items: center; justify-content: center; }
+
+/* ── Candidate cell ──────────────────────────────────────────── */
+.candidateName {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.candidateEmail {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Applied-For cell ────────────────────────────────────────── */
+.appliedForCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+/* Title + "+N more" chip on the same line */
+.appliedForTitleRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.appliedForTitle {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.appliedForMeta {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+}
+
+/* ── "+N more" chip & tooltip ────────────────────────────────── */
+.moreChipWrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.moreChip {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 8px;
+  border: 1px solid #01959f;
+  border-radius: 9999px;
+  background: transparent;
+  font-family: var(--font-base);
+  font-size: 11px;
+  font-weight: 500;
+  color: #01959f;
+  cursor: pointer;
+  transition: background 0.1s;
+  flex-shrink: 0;
+}
+
+.moreChip:hover {
+  background: rgba(0, 177, 177, 0.08);
+}
+
+.tooltip {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  min-width: 220px;
+  padding: 6px 0;
+}
+
+.tooltipItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: 100%;
+  padding: 7px 14px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.tooltipItem:hover {
+  background: rgba(0, 0, 47, 0.04);
+}
+
+/* currently displayed vacancy in the row */
+.tooltipItemActive {
+  background: rgba(0, 177, 177, 0.07);
+}
+
+.tooltipItemActive .tooltipItemTitle {
+  color: #01959f;
+}
+
+.tooltipItemTitle {
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.tooltipItemMeta {
+  font-family: var(--font-base);
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+/* ── Status badge ────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 9999px;
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+.badgeWaitingReview {
+  background: rgba(255, 149, 0, 0.12);
+  color: #945000;
+}
+
+.badgeInProgress {
+  background: rgba(0, 0, 47, 0.07);
+  color: rgba(0, 7, 20, 0.45);
+}
+
+.badgeShortlisted {
+  background: rgba(0, 177, 177, 0.1);
+  color: #01959f;
+}
+
+.badgeOfferSent {
+  background: rgba(0, 178, 89, 0.12);
+  color: #1a7f4b;
+}
+
+/* ── Activity cell ───────────────────────────────────────────── */
+.activityEvent {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activityMeta {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activitySystem {
+  font-style: italic;
+  color: var(--text-tertiary);
+}
+
+/* ── Dots action button ──────────────────────────────────────── */
+.dotsBtn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  border-radius: 6px;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s, color 0.1s;
+}
+
+.dotsBtn:hover {
+  background: rgba(0, 0, 47, 0.06);
+  color: var(--text-secondary);
+}
+
+/* ── Table empty (no results) ────────────────────────────────── */
+.tableEmpty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 24px;
+}
+
+.tableEmptyInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.tableEmptyTitle {
+  font-family: var(--font-base);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ── Table footer ────────────────────────────────────────────── */
+.tableFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-top: 1px solid rgba(0, 0, 47, 0.08);
+}
+
+.footerCount {
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pageBtn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s, color 0.1s;
+}
+
+.pageBtn:hover:not(:disabled) {
+  background: rgba(0, 177, 177, 0.07);
+  color: #01959f;
+  border-color: #01959f;
+}
+
+.pageBtn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.pageLabel {
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* ── State: empty / waiting / error ─────────────────────────── */
+.stateCentered {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.stateCard {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 16px;
+  padding: 40px 48px;
+  max-width: 520px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.stateIconWrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stateIconTeal {
+  background: rgba(0, 194, 209, 0.13);
+  color: #01959f;
+}
+
+.stateIconRed {
+  background: rgba(229, 72, 77, 0.12);
+  color: #e5484d;
+}
+
+.stateTitle {
+  font-family: var(--font-base);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.stateBody {
+  font-family: var(--font-base);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 22px;
+  margin: 0;
+}
+
+.stateActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px;
+  background: #01959f;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.12s;
+}
+
+.btnPrimary:hover {
+  background: #017a83;
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px;
+  background: transparent;
+  color: #01959f;
+  border: 1px solid rgba(0, 155, 169, 0.45);
+  border-radius: 6px;
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.12s, color 0.12s;
+}
+
+.btnGhost:hover {
+  background: rgba(0, 177, 177, 0.07);
+}
+
+.refreshBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  background: transparent;
+  color: #01959f;
+  border: 1px solid rgba(0, 155, 169, 0.45);
+  border-radius: 6px;
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.refreshBtn:hover {
+  background: rgba(0, 177, 177, 0.07);
+}
+
+.inlineLink {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-base);
+  font-size: 15px;
+  font-weight: 500;
+  color: #01959f;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+}
+
+/* ── FAB ─────────────────────────────────────────────────────── */
+.fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: #01959f;
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(1, 149, 159, 0.35);
+  transition: background 0.15s, box-shadow 0.15s;
+  z-index: 50;
+}
+
+.fab:hover {
+  background: #017a83;
+  box-shadow: 0 6px 20px rgba(1, 149, 159, 0.45);
+}

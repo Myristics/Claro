@@ -1,0 +1,26 @@
+.text {
+  font-family: var(--font-base);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+
+.size-xs   { font-size: var(--text-xs); }
+.size-sm   { font-size: var(--text-sm); }
+.size-base { font-size: var(--text-base); }
+.size-md   { font-size: var(--text-md); }
+.size-lg   { font-size: var(--text-lg); }
+.size-xl   { font-size: var(--text-xl); }
+.size-2xl  { font-size: var(--text-2xl); }
+.size-3xl  { font-size: var(--text-3xl); }
+
+.weight-normal   { font-weight: 400; }
+.weight-medium   { font-weight: 500; }
+.weight-semibold { font-weight: 600; }
+.weight-bold     { font-weight: 700; }
+
+.color-primary   { color: var(--text-primary); }
+.color-secondary { color: var(--text-secondary); }
+.color-tertiary  { color: var(--text-tertiary); }
+.color-disabled  { color: var(--text-disabled); }
+.color-brand     { color: var(--brand); }
+.color-error     { color: var(--state-error-text); }

@@ -1,0 +1,328 @@
+/* ── Page shell ─────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--page-bg);
+}
+
+/* ── Page header ────────────────────────────────────────── */
+.pageHeader {
+  padding: 24px 24px 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.heading {
+  font-family: var(--font-base);
+  font-size: 20px;
+  font-weight: 700;
+  color: #1c2024;
+  letter-spacing: -0.08px;
+  line-height: 28px;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 20px;
+  margin: 0;
+  max-width: 560px;
+}
+
+/* ── Search + sort row ──────────────────────────────────── */
+.searchRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px 0;
+  flex-shrink: 0;
+}
+
+.searchWrap {
+  position: relative;
+  width: 320px;
+  flex-shrink: 0;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(0, 5, 29, 0.45);
+  pointer-events: none;
+  display: flex;
+}
+
+.searchInput {
+  width: 100%;
+  height: 32px;
+  padding: 0 12px 0 32px;
+  border: 1px solid rgba(0, 8, 48, 0.27);
+  border-radius: 4px;
+  background: #ffffff;
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: #1c2024;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.12s;
+}
+
+.searchInput::placeholder { color: rgba(0, 5, 29, 0.45); }
+.searchInput:focus { border-color: #01959f; }
+
+.sortBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 6, 46, 0.15);
+  border-radius: 4px;
+  background: transparent;
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: #646464;
+  cursor: pointer;
+  margin-left: auto;
+  white-space: nowrap;
+  transition: background 0.12s;
+}
+
+.sortBtn:hover { background: rgba(0, 0, 0, 0.03); color: #1c2024; }
+
+/* ── Scrollable body ────────────────────────────────────── */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Section ────────────────────────────────────────────── */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionLabel {
+  font-family: var(--font-base);
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(0, 0, 47, 0.45);
+  letter-spacing: 0.07em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* ── Pinned row (side-by-side, equal-width) ─────────────── */
+.pinnedRow {
+  display: flex;
+  gap: 16px;
+}
+
+.pinnedRow .card {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Card grid (2-col for per-application) ──────────────── */
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ── Conversation card ──────────────────────────────────── */
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 12px;
+  padding: 20px 24px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: rgba(0, 0, 47, 0.28);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Wide variant — full-width pinned card */
+.cardWide { /* no extra rules needed; sits naturally in flex column */ }
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardTitle {
+  font-family: var(--font-base);
+  font-size: 16px;
+  font-weight: 700;
+  color: #1c2024;
+  line-height: 24px;
+}
+
+.cardTime {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 7, 20, 0.62);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cardCompany {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0, 7, 20, 0.62);
+  line-height: 16px;
+}
+
+.cardPreview {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 20px;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardCount {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(0, 7, 20, 0.62);
+  line-height: 16px;
+}
+
+/* ── Empty state ────────────────────────────────────────── */
+.emptyCentered {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.emptyCard {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 12px;
+  padding: 40px 32px;
+  max-width: 460px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.emptyIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: rgba(0, 194, 209, 0.13);
+  color: #01959f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.emptyTitle {
+  font-family: var(--font-base);
+  font-size: 18px;
+  font-weight: 700;
+  color: #1c2024;
+  line-height: 26px;
+  letter-spacing: -0.04px;
+  margin: 0;
+}
+
+.emptyBody {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 20px;
+  margin: 0;
+}
+
+.suggestionRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.suggestionChip {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 14px;
+  border: 1px solid rgba(0, 155, 169, 0.5);
+  border-radius: 9999px;
+  background: rgba(0, 177, 177, 0.05);
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 500;
+  color: #007e88;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.suggestionChip:hover {
+  background: rgba(0, 177, 177, 0.1);
+}
+
+/* ── Floating action button ─────────────────────────────── */
+.fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: #01959f;
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(1, 149, 159, 0.35);
+  transition: background 0.15s, box-shadow 0.15s;
+  z-index: 50;
+}
+
+.fab:hover {
+  background: #017a83;
+  box-shadow: 0 6px 20px rgba(1, 149, 159, 0.45);
+}

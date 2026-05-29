@@ -1,0 +1,457 @@
+/* ── Page shell ───────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* ── Back nav ─────────────────────────────────────────────── */
+.back {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6) 0;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+
+.back:hover {
+  color: var(--brand);
+}
+
+/* ── Main inner layout ────────────────────────────────────── */
+.inner {
+  display: flex;
+  gap: var(--space-6);
+  padding: var(--space-5) var(--space-6) var(--space-8);
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+/* ── Left column (2/3) ────────────────────────────────────── */
+.left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* ── Job header ───────────────────────────────────────────── */
+.jobHeader {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.jobHeaderInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.jobTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: var(--leading-snug);
+  margin: 0 0 var(--space-1);
+}
+
+.jobCompany {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ── Section heading ──────────────────────────────────────── */
+.sectionTitle {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-4);
+}
+
+/* ── Stage timeline ───────────────────────────────────────── */
+.timeline {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.timelineList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timelineItem {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  position: relative;
+}
+
+/* vertical connector line between items */
+.timelineItem:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 24px;
+  width: 2px;
+  height: calc(100% - 8px);
+  background: var(--border);
+  z-index: 0;
+}
+
+.timelineItem.done::after,
+.timelineItem.current::after {
+  background: var(--brand);
+}
+
+.timelineDotWrap {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  margin-top: 12px;
+}
+
+.timelineDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background 0.2s;
+}
+
+.timelineDot.done {
+  background: var(--brand);
+}
+
+.timelineDot.current {
+  background: var(--brand);
+  box-shadow: 0 0 0 4px var(--nav-active-bg);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px var(--nav-active-bg); }
+  50% { box-shadow: 0 0 0 7px rgba(15, 110, 86, 0.12); }
+}
+
+.timelineDot.future {
+  background: var(--border);
+}
+
+.timelineContent {
+  padding: var(--space-3) 0 var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.timelineLabel {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+.timelineLabel.done,
+.timelineLabel.current {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.timelineLabel.future {
+  color: var(--text-tertiary);
+}
+
+.timelineSub {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+}
+
+/* ── Action card (assessment / offer / closed) ────────────── */
+.actionCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.actionCardInner {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.actionCardUrgent {
+  background: var(--state-urgent-bg);
+  border-color: var(--state-urgent-text);
+}
+
+.actionCardResolved {
+  background: var(--state-resolved-bg);
+  border-color: var(--state-resolved-text);
+}
+
+.actionCardPassive {
+  background: var(--state-passive-bg);
+  border-color: var(--border);
+}
+
+.actionCardBrand {
+  background: rgba(0, 194, 209, 0.06);
+  border-color: rgba(0, 155, 169, 0.4);
+}
+
+.actionCardTitle {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.actionCardBody {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.actionCardActions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-1);
+}
+
+/* ── Assessment progress block ────────────────────────────── */
+.assessmentList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.assessmentRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--page-bg);
+  border: 1px solid var(--border-light);
+}
+
+.assessmentRowDone {
+  opacity: 0.8;
+}
+
+.assessmentIconWrap {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.assessmentInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.assessmentName {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.assessmentMeta {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+}
+
+.assessmentCheck {
+  color: var(--brand);
+  flex-shrink: 0;
+}
+
+/* ── Last activity ────────────────────────────────────────── */
+.activityCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* ── Insight locked notice ────────────────────────────────── */
+.insightLocked {
+  background: var(--state-passive-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.insightLockedIcon {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── Right column (1/3) ───────────────────────────────────── */
+.right {
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: sticky;
+  top: var(--space-5);
+}
+
+/* ── Status card ─────────────────────────────────────────── */
+.statusCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.statusCardHeader {
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.statusCardStageRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.statusCardStageName {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 0;
+}
+
+.statusCardBody {
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.statusCardRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+}
+
+.statusCardRowLabel {
+  color: var(--text-tertiary);
+}
+
+.statusCardRowValue {
+  color: var(--text-primary);
+  font-weight: 500;
+  text-align: right;
+}
+
+/* ── AI button ────────────────────────────────────────────── */
+.aiButton {
+  background: var(--nav-active-bg);
+  border: 1px solid var(--brand);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ── Error / empty state ──────────────────────────────────── */
+.stateCenter {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+}
+
+.stateCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-7);
+  max-width: 520px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+}
+
+.stateIconWrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stateIconError {
+  background: var(--state-error-bg);
+  color: var(--state-error-text);
+}
+
+.stateTitle {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.stateBody {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 360px;
+  margin: 0;
+}

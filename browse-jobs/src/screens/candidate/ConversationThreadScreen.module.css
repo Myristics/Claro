@@ -1,0 +1,337 @@
+/* ── Page shell ─────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--page-bg);
+}
+
+/* ── Topbar ─────────────────────────────────────────────── */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 24px;
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(0, 0, 47, 0.15);
+  flex-shrink: 0;
+}
+
+.backBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  background: none;
+  color: rgba(0, 7, 20, 0.62);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.12s, color 0.12s;
+}
+
+.backBtn:hover {
+  background: rgba(0, 194, 209, 0.1);
+  color: #01959f;
+}
+
+.topbarTitle {
+  flex: 1;
+  text-align: right;
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: #1c2024;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.topbarAbout {
+  font-weight: 400;
+  color: rgba(0, 7, 20, 0.62);
+}
+
+.topbarJob {
+  font-weight: 700;
+  color: #1c2024;
+}
+
+/* ── Messages area ──────────────────────────────────────── */
+.messagesArea {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 750px;
+  width: 100%;
+  align-self: center;
+  box-sizing: border-box;
+}
+
+/* ── Date group label ───────────────────────────────────── */
+.dateLabel {
+  text-align: center;
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(0, 7, 20, 0.45);
+  padding: 4px 0 8px;
+  flex-shrink: 0;
+}
+
+/* ── Message rows ───────────────────────────────────────── */
+.messageRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.messageRowUser {
+  flex-direction: row-reverse;
+  align-self: flex-end;
+}
+
+.messageRowAi {
+  flex-direction: row;
+  align-self: flex-start;
+}
+
+/* ── AI avatar ──────────────────────────────────────────── */
+.aiAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  background: rgba(0, 194, 209, 0.13);
+  color: #01959f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Bubble group (bubble + timestamp stacked) ──────────── */
+.bubbleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 60vw;
+}
+
+.messageRowUser .bubbleGroup {
+  align-items: flex-end;
+}
+
+.messageRowAi .bubbleGroup {
+  align-items: flex-start;
+}
+
+/* ── Bubbles ────────────────────────────────────────────── */
+.bubble {
+  padding: 12px 16px;
+  font-family: var(--font-base);
+  font-size: 14px;
+  line-height: 20px;
+  word-break: break-word;
+}
+
+.bubbleUser {
+  background: #01959f;
+  color: #ffffff;
+  border-radius: 12px 12px 4px 12px;
+}
+
+.bubbleAi {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  color: #1c2024;
+  border-radius: 4px 12px 12px 12px;
+}
+
+/* ── Timestamps ─────────────────────────────────────────── */
+.timestamp {
+  font-family: var(--font-base);
+  font-size: 11px;
+  color: rgba(0, 7, 20, 0.45);
+  padding: 0 4px;
+}
+
+.timestampUser {
+  text-align: right;
+}
+
+/* ── "Want to continue" card ────────────────────────────── */
+.continueCard {
+  width: calc(100% - 48px);
+  max-width: 702px; /* matches 750px messages area minus 24px padding each side */
+  margin: 0 auto 20px;
+  border: 1px dashed rgba(0, 8, 48, 0.27);
+  border-radius: 12px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.continueText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.continueTitle {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 700;
+  color: #1c2024;
+}
+
+.continueSub {
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0, 7, 20, 0.62);
+  line-height: 18px;
+}
+
+.openChatBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 155, 169, 0.5);
+  background: rgba(0, 177, 177, 0.05);
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 500;
+  color: #007e88;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.12s;
+}
+
+.openChatBtn:hover {
+  background: rgba(0, 177, 177, 0.1);
+}
+
+/* ── Centered state (error) ─────────────────────────────── */
+.stateCentered {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.stateCard {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 12px;
+  padding: 40px 32px;
+  max-width: 440px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.errorIconWrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: rgba(229, 72, 77, 0.12);
+  color: #e5484d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stateTitle {
+  font-family: var(--font-base);
+  font-size: 18px;
+  font-weight: 700;
+  color: #1c2024;
+  letter-spacing: -0.04px;
+  margin: 0;
+}
+
+.stateBody {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 20px;
+  margin: 0;
+}
+
+.inlineLink {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 500;
+  color: #3d63dd;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+}
+
+.refreshBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 155, 169, 0.5);
+  background: rgba(0, 177, 177, 0.05);
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 500;
+  color: #007e88;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.refreshBtn:hover {
+  background: rgba(0, 177, 177, 0.1);
+}
+
+/* ── Floating action button ─────────────────────────────── */
+.fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: #01959f;
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(1, 149, 159, 0.35);
+  transition: background 0.15s, box-shadow 0.15s;
+  z-index: 50;
+}
+
+.fab:hover {
+  background: #017a83;
+  box-shadow: 0 6px 20px rgba(1, 149, 159, 0.45);
+}

@@ -1,0 +1,1047 @@
+/* ── Page shell ─────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Header bar ─────────────────────────────────────────── */
+.headerBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+  height: var(--topbar-height);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-alpha-header);
+  flex-shrink: 0;
+  gap: var(--space-3);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* 32×32 bordered icon button */
+.backIconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-md);
+  background: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background 0.15s;
+  flex-shrink: 0;
+  outline: none;
+}
+
+.backIconBtn:hover { background: var(--page-bg); }
+
+.backIconBtn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.headerTitle {
+  font-family: var(--font-base);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ── Scroll area ────────────────────────────────────────── */
+.scrollArea {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-6);
+}
+
+/* ── Inner column ───────────────────────────────────────── */
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  width: 100%;
+}
+
+/* ── Hero row (open — no card border) ────────────────────── */
+.heroRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+.heroInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.heroName {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--leading-tight);
+}
+
+.heroContact {
+  display: flex;
+  align-items: center;
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  flex-wrap: wrap;
+  row-gap: 2px;
+}
+
+.heroDot {
+  margin: 0 var(--space-2);
+  color: var(--text-overlay-60);
+}
+
+.heroChips {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* Square-ish chip — border-radius: 3px per Figma */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px var(--space-2);
+  background: var(--chip-neutral-bg);
+  border-radius: 3px;
+  font-size: var(--text-xs);
+  font-family: var(--font-base);
+  color: var(--text-overlay-60);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.chipAmber {
+  background: var(--chip-amber-bg);
+  color: var(--amber);
+}
+
+/* ── Multi-role banner ──────────────────────────────────── */
+.multiRoleBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border-soft);
+  border-radius: var(--radius-md);
+}
+
+.multiRoleIcon {
+  color: var(--brand-mid);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.multiRoleText {
+  flex: 1;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: var(--leading-relaxed);
+}
+
+.multiRoleLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--brand-mid);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 0.15s;
+}
+
+.multiRoleLink:hover { opacity: 0.8; }
+
+/* ── Tabs bar (no card, underline only) ─────────────────── */
+.tabsSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.tabsNav {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border-alpha);
+}
+
+.tabBtn {
+  flex: 1;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  font-family: var(--font-base);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--text-overlay-60);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  outline: none;
+  white-space: nowrap;
+}
+
+.tabBtn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: -2px;
+}
+
+.tabBtnActive {
+  color: var(--text-primary);
+  border-bottom-color: var(--brand);
+  font-weight: 500;
+}
+
+/* ─────────────────────────────────────────────────────────
+   OVERVIEW TAB
+   ──────────────────────────────────────────────────────── */
+
+.overviewContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+}
+
+/* Shared card header */
+.cardHeader {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--border-alpha-subtle);
+}
+
+.cardTitle {
+  font-family: var(--font-base);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* ── Candidate Information card ─────────────────────────── */
+.infoCard {
+  background: var(--surface);
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.infoTable {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoRow {
+  display: grid;
+  grid-template-columns: 134px 1fr;
+  padding: 10px var(--space-6);
+  border-bottom: 1px solid var(--border-alpha-subtle);
+  align-items: flex-start;
+  min-height: 40px;
+}
+
+.infoRow:last-child { border-bottom: none; }
+
+.infoLabel {
+  font-size: var(--text-xs);
+  color: var(--text-overlay-60);
+  font-family: var(--font-base);
+  padding-top: 2px;
+}
+
+.infoValue {
+  display: flex;
+  align-items: center;
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  min-width: 0;
+}
+
+.infoLinkIcon {
+  display: inline-flex;
+  align-items: center;
+  margin-right: var(--space-1);
+  flex-shrink: 0;
+}
+
+.infoLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--brand-mid);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-size: var(--text-base);
+  transition: opacity 0.15s;
+}
+
+.infoLink:hover { opacity: 0.8; }
+
+/* ── Two-column: timeline + snapshot ───────────────────── */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+/* ── Application timeline card ──────────────────────────── */
+.timelineCard {
+  background: var(--surface);
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+}
+
+.timelineItem {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.timelineDotCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 18px;
+  padding-top: 2px;
+}
+
+/* 18px teal-light circle */
+.timelineDot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--timeline-dot-light);
+  flex-shrink: 0;
+  display: block;
+}
+
+/* 2px connector line */
+.timelineConnector {
+  flex: 1;
+  width: 2px;
+  background: var(--border-alpha-header);
+  min-height: var(--space-4);
+  margin: 4px 0;
+  display: block;
+}
+
+.timelineBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: var(--space-5);
+}
+
+.timelineItem:last-child .timelineBody { padding-bottom: 0; }
+
+.timelineLabel {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+}
+
+/* Neutral badge note below event label */
+.timelineNote {
+  display: inline-block;
+  background: var(--chip-neutral-bg);
+  border-radius: var(--radius-sm);
+  padding: 3px var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--text-overlay-60);
+  line-height: var(--leading-relaxed);
+}
+
+.timelineMeta {
+  font-size: 10px;
+  color: var(--text-overlay-60);
+  line-height: 1.4;
+}
+
+/* ── Assessment snapshot card ───────────────────────────── */
+.snapshotCard {
+  background: var(--surface);
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.snapshotList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+}
+
+/* Each assessment: bordered card */
+.snapshotItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  gap: var(--space-3);
+}
+
+.snapshotItemLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+  min-width: 0;
+}
+
+/* 24px icon */
+.snapshotIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.snapshotItemMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.snapshotItemName {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.snapshotItemStatus {
+  font-size: var(--text-xs);
+  color: var(--text-overlay-60);
+}
+
+/* Score value: 20px bold green */
+.snapshotScore {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--score-bright);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Personality OCEAN text: 14px bold primary */
+.snapshotPersonality {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  flex-shrink: 0;
+  text-align: right;
+}
+
+/* Score not yet available */
+.snapshotScoreEmpty {
+  font-size: var(--text-sm);
+  color: var(--text-overlay-60);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.snapshotEmpty {
+  font-size: var(--text-sm);
+  color: var(--text-overlay-60);
+  margin: 0;
+  padding: var(--space-4) var(--space-6);
+}
+
+/* Overall score row */
+.snapshotOverall {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) 0 0;
+  margin-top: var(--space-1);
+  border-top: 1px solid var(--border-alpha-subtle);
+  gap: var(--space-3);
+}
+
+.snapshotOverallLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* "Overall score" 16px medium */
+.snapshotOverallLabel {
+  font-family: var(--font-base);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* "Based on X of Y assessments" 14px regular secondary */
+.snapshotOverallSub {
+  font-size: var(--text-base);
+  color: var(--text-overlay-60);
+}
+
+/* 28px bold green */
+.snapshotOverallValue {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--score-bright);
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   ASSESSMENT TAB
+   ──────────────────────────────────────────────────────── */
+
+.assessmentContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+}
+
+/* ── Assessment card ────────────────────────────────────── */
+.assessCard {
+  background: var(--surface);
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.assessCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--border-alpha-subtle);
+}
+
+.assessCardTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.assessCardDate {
+  font-size: var(--text-xs);
+  color: var(--text-overlay-60);
+  white-space: nowrap;
+}
+
+.assessCardBody {
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ── Score row: big number + status badge ───────────────── */
+.assessScoreRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* 32px bold green */
+.assessBigScore {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--score-bright);
+  line-height: 1;
+}
+
+/* "Above threshold" — teal */
+.assessStatusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-2);
+  background: rgba(1, 149, 159, 0.12);
+  border-radius: 3px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--brand-mid);
+}
+
+/* "Below threshold" — amber */
+.assessStatusBadgeFail {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-2);
+  background: rgba(186, 117, 23, 0.12);
+  border-radius: 3px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--dot-warning);
+}
+
+/* "AI-generated summary" badge */
+.assessAiBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-2);
+  background: rgba(1, 149, 159, 0.12);
+  border-radius: 3px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--brand-mid);
+}
+
+/* "Passing threshold: 70% — set by recruiter" */
+.assessThresholdText {
+  font-size: var(--text-xs);
+  color: var(--text-overlay-60);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-alpha-subtle);
+}
+
+/* AI summary paragraph */
+.assessAiSummary {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* "Breakdown by category" / "Breakdown by question" label */
+.assessSectionLabel {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ── Progress bars ──────────────────────────────────────── */
+.assessBarRows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* grid: label + bar track + value */
+.assessBarRow {
+  display: grid;
+  grid-template-columns: 160px 1fr 44px;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.assessBarLabel {
+  font-size: var(--text-xs);
+  color: var(--text-overlay-60);
+}
+
+/* bar track — overflow: visible so threshold marker can poke out */
+.assessBarTrack {
+  position: relative;
+  height: 6px;
+  background: var(--border-alpha-subtle);
+  border-radius: var(--radius-full);
+  overflow: visible;
+}
+
+/* bar fill — colored inline */
+.assessBarFill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* vertical threshold marker line */
+.assessBarMarker {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 1.5px;
+  transform: translateX(-50%);
+  border-radius: 1px;
+  background: var(--amber-border-strong);
+}
+
+.assessBarVal {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: right;
+}
+
+.assessBarValAmber {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--amber);
+  text-align: right;
+}
+
+/* ── Personality OCEAN sliders ──────────────────────────── */
+.assessOceanSection {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.assessOceanRows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* grid: trait name | Low | track | High */
+.assessOceanRow {
+  display: grid;
+  grid-template-columns: 148px 28px 1fr 28px;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.assessOceanLabel {
+  font-size: var(--text-xs);
+  color: var(--text-overlay-60);
+}
+
+.assessOceanScaleLabel {
+  font-size: 10px;
+  color: var(--text-overlay-60);
+  white-space: nowrap;
+}
+
+.assessOceanTrack {
+  position: relative;
+  height: 4px;
+  background: var(--border-alpha-subtle);
+  border-radius: var(--radius-full);
+}
+
+/* teal filled portion left of dot */
+.assessOceanFill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--brand);
+  border-radius: var(--radius-full);
+}
+
+/* circle indicator dot */
+.assessOceanDot {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--brand);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--brand);
+}
+
+/* ── Not-started placeholder ────────────────────────────── */
+.assessNote {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: var(--leading-relaxed);
+}
+
+/* ── AI Interview Q&A list ──────────────────────────────── */
+.assessQList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-alpha-subtle);
+  margin-top: var(--space-1);
+}
+
+.assessQItem {
+  border-bottom: 1px solid var(--border-alpha-subtle);
+}
+
+.assessQItem:last-child { border-bottom: none; }
+
+.assessQBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-3) 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  outline: none;
+  gap: var(--space-3);
+}
+
+.assessQBtn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.assessQBtnText {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.assessQChevron {
+  color: var(--text-overlay-60);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.assessQBody {
+  padding-bottom: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Sub-scores bordered section */
+.assessQSubScores {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.assessQSubScore {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  border-right: 1px solid var(--border-alpha-subtle);
+}
+
+.assessQSubScore:last-of-type { border-right: none; }
+
+.assessQSubVal {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.assessQSubLabel {
+  font-size: var(--text-xs);
+  color: var(--text-overlay-60);
+}
+
+.assessQSubBarTrack {
+  height: 3px;
+  background: var(--border-alpha-subtle);
+  border-radius: var(--radius-full);
+  margin-top: var(--space-1);
+  overflow: hidden;
+}
+
+.assessQSubBarFill {
+  height: 100%;
+  background: var(--brand);
+  border-radius: var(--radius-full);
+}
+
+/* Total score cell */
+.assessQTotal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  justify-content: center;
+  background: var(--page-bg);
+  min-width: 100px;
+  text-align: right;
+}
+
+.assessQTotalVal {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--score-bright);
+  line-height: 1;
+}
+
+.assessQTotalLabel {
+  font-size: var(--text-xs);
+  color: var(--text-overlay-60);
+}
+
+/* Transcript section */
+.assessTranscriptHeader {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.assessTranscript {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  background: var(--page-bg);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   AI CHAT FAB
+   ──────────────────────────────────────────────────────── */
+
+.aiFab {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: var(--text-on-brand);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  transition: background 0.15s, transform 0.15s;
+  outline: none;
+  z-index: 50;
+}
+
+.aiFab:hover {
+  background: var(--brand-mid);
+  transform: scale(1.05);
+}
+
+.aiFab:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   ERROR STATE
+   ──────────────────────────────────────────────────────── */
+
+.errorWrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+}
+
+.errorCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 380px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-7);
+}
+
+.errorIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--state-error-bg);
+  color: var(--state-error-text);
+}
+
+.errorTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+
+.errorBody {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: var(--leading-relaxed);
+}
+
+.errorLink {
+  display: inline;
+  color: var(--brand);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 0.15s;
+}
+
+.errorLink:hover { opacity: 0.8; }

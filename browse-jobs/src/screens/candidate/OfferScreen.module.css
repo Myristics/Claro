@@ -1,0 +1,520 @@
+/* ── Page shell ────────────────────────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--page-bg);
+  overflow: hidden;
+}
+
+/* ── Topbar ──────────────────────────────────────────────────────────────── */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+  height: var(--topbar-height);
+  background: var(--header-bg-frosted);
+  border-bottom: 1px solid var(--border-alpha-header);
+  flex-shrink: 0;
+  gap: var(--space-4);
+}
+
+/* Back button — outlined ghost style matching Figma */
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 32px;
+  padding: 0 var(--space-3);
+  color: var(--text-overlay-60);
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  background: var(--surface);
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.backBtn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-alpha-strong);
+}
+
+.topbarTitle {
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  color: var(--text-overlay-40);
+  margin: 0;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.topbarTitle strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ── Scrollable content ──────────────────────────────────────────────────── */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-6) var(--space-6) var(--space-9);
+}
+
+.inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ── Banner card (teal left accent, white bg) ────────────────────────────── */
+.bannerCard {
+  background: var(--surface);
+  border: 1px solid var(--border-alpha);
+  border-left: 5px solid var(--brand);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.bannerTopRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.bannerStar {
+  color: var(--brand);
+  flex-shrink: 0;
+}
+
+.bannerMeta {
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  color: var(--text-overlay-60);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.bannerSep {
+  color: var(--text-overlay-30);
+}
+
+.bannerTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+
+.bannerBody {
+  font-family: var(--font-base);
+  font-size: var(--text-base);
+  color: var(--text-overlay-60);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* ── Main offer card ─────────────────────────────────────────────────────── */
+.offerCard {
+  background: var(--surface);
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  overflow: hidden;
+}
+
+.offerHeading {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--leading-tight);
+}
+
+/* ── Offer 2-col grid ────────────────────────────────────────────────────── */
+.offerGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5) var(--space-6);
+}
+
+.offerCell {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.offerCellFull {
+  grid-column: 1 / -1;
+}
+
+.offerLabel {
+  font-family: var(--font-base);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-overlay-40);
+  letter-spacing: 0.6px;
+}
+
+.offerValue {
+  font-family: var(--font-base);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: var(--leading-snug);
+}
+
+/* ── Benefit chips — outlined gray style ─────────────────────────────────── */
+.benefitChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.benefitChip {
+  font-family: var(--font-base);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--text-overlay-60);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 3px var(--space-3);
+  white-space: nowrap;
+}
+
+/* ── Card internal divider ───────────────────────────────────────────────── */
+.cardDivider {
+  height: 1px;
+  background: var(--border-alpha-subtle);
+  margin: 0 calc(var(--space-6) * -1);
+}
+
+/* ── Download button — teal ghost ────────────────────────────────────────── */
+.downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 36px;
+  padding: 0 var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--brand-border-soft);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--brand);
+  cursor: pointer;
+  transition: background 0.15s;
+  width: fit-content;
+}
+
+.downloadBtn:hover {
+  background: var(--brand-surface);
+}
+
+.downloadIcon {
+  color: var(--brand);
+  flex-shrink: 0;
+}
+
+/* ── Deadline amber banner — full-width inside card ─────────────────────── */
+.deadlineBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  background: var(--state-urgent-bg);
+  /* stretch edge-to-edge, card overflow:hidden clips to border-radius */
+  margin: 0 calc(var(--space-6) * -1);
+}
+
+.deadlineIcon {
+  color: var(--amber);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.deadlineText {
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  color: var(--state-urgent-text);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* ── YOUR RESPONSE section ───────────────────────────────────────────────── */
+.responseSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.responseDivider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.dividerLabel {
+  font-family: var(--font-base);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-overlay-40);
+  letter-spacing: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: var(--border-alpha-subtle);
+}
+
+.responseInstruction {
+  font-family: var(--font-base);
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.responseBtns {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* Accept — teal filled */
+.btnAccept {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 36px;
+  padding: 0 var(--space-5);
+  background: var(--brand);
+  color: var(--text-on-brand);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.btnAccept:hover {
+  background: var(--brand-mid);
+}
+
+/* Decline — plain ghost */
+.btnDecline {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 var(--space-4);
+  background: var(--surface);
+  color: var(--text-overlay-60);
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.btnDecline:hover {
+  background: var(--page-bg);
+  border-color: var(--border-alpha-strong);
+}
+
+/* Ask AI — teal ghost, pushed right */
+.btnAskAi {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 36px;
+  padding: 0 var(--space-4);
+  background: var(--brand-surface);
+  color: var(--brand-mid);
+  border: 1px solid var(--brand-border-soft);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.btnAskAi:hover {
+  background: var(--brand-surface-hover);
+}
+
+/* ── Insight row — card footer ───────────────────────────────────────────── */
+.insightRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  background: var(--page-bg);
+  border-top: 1px solid var(--border-alpha-subtle);
+  /* stretch to card edges and flush to bottom */
+  margin: 0 calc(var(--space-6) * -1) calc(var(--space-6) * -1);
+}
+
+.insightRowLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.insightIconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--brand-tint);
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.insightRowText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.insightRowTitle {
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.insightRowSub {
+  font-family: var(--font-base);
+  font-size: var(--text-xs);
+  color: var(--text-overlay-60);
+  margin: 0;
+  line-height: var(--leading-relaxed);
+}
+
+.insightRowBtn {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 var(--space-4);
+  background: var(--surface);
+  color: var(--text-overlay-60);
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.insightRowBtn:hover {
+  border-color: var(--border-alpha-strong);
+}
+
+/* ── Not-found state ─────────────────────────────────────────────────────── */
+.stateCenter {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+}
+
+.stateCard {
+  background: var(--surface);
+  border: 1px solid var(--border-alpha);
+  border-radius: 16px;
+  padding: var(--space-8);
+  max-width: 440px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+}
+
+.errorIconWrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--state-error-bg);
+  color: var(--recording);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stateTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.stateBody {
+  font-size: var(--text-base);
+  color: var(--text-overlay-60);
+  line-height: var(--leading-loose);
+  margin: 0;
+}
+
+.statePrimaryBtn {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 var(--space-5);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--brand);
+  color: var(--text-on-brand);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-base);
+}

@@ -1,0 +1,779 @@
+/* ApplicationsScreen.module.css */
+
+/* ── Page shell ─────────────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--page-bg);
+}
+
+/* ── Header ─────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.heading {
+  font-family: var(--font-base);
+  font-size: 20px;
+  font-weight: 700;
+  color: #1c2024;
+  letter-spacing: -0.08px;
+  line-height: 28px;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 20px;
+  margin: 0;
+}
+
+/* ── Filter bar ─────────────────────────────────────────────────── */
+.filterBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Search input */
+.searchWrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 320px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(0, 5, 29, 0.45);
+  pointer-events: none;
+  display: flex;
+}
+
+.searchInput {
+  width: 100%;
+  height: 32px;
+  padding: 0 12px 0 32px;
+  border: 1px solid rgba(0, 8, 48, 0.27);
+  border-radius: 4px;
+  background: #ffffff;
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: #1c2024;
+  outline: none;
+  transition: border-color 0.12s;
+}
+
+.searchInput::placeholder {
+  color: rgba(0, 5, 29, 0.45);
+}
+
+.searchInput:focus {
+  border-color: #01959f;
+}
+
+/* Filter chips */
+.chips {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 6, 46, 0.15);
+  border-radius: 9999px;
+  background: transparent;
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: #646464;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+
+.chip:hover {
+  border-color: rgba(0, 6, 46, 0.3);
+  color: #1c2024;
+}
+
+.chipActive {
+  background: rgba(0, 177, 177, 0.05);
+  border: 1.5px solid #49b8c2;
+  color: #007e88;
+  font-weight: 500;
+}
+
+.chipActive:hover {
+  background: rgba(0, 177, 177, 0.08);
+  border-color: #49b8c2;
+  color: #007e88;
+}
+
+.chipCount {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* Sort button */
+.sortBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 6, 46, 0.15);
+  border-radius: 4px;
+  background: transparent;
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: #646464;
+  cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
+  margin-left: auto;
+  transition: background 0.12s;
+}
+
+.sortBtn:hover {
+  background: var(--page-bg);
+  color: #1c2024;
+}
+
+/* ── Scrollable body ─────────────────────────────────────────────── */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ── Application status card ─────────────────────────────────────── */
+.card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  cursor: default;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  border-color: rgba(0, 0, 47, 0.28);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Colored left accent strip */
+.cardStrip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.stripNeutral { background: rgba(0, 0, 51, 0.18); }
+.stripTeal    { background: #01959f; }
+.stripTeal2   { background: #007e88; }
+.stripAmber   { background: #dc9b00; }
+.stripOrange  { background: #e54d2e; }
+.stripGreen   { background: #018a6e; }
+.stripViolet  { background: #6E56CF; }
+.stripBlue    { background: #4863a5; }
+
+/* Card main content */
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 24px 24px 20px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Info row: left col (badge + title) + right col (date + ref) */
+.infoContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Left column: badge then title/company stacked */
+.infoLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Status badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 4px;
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.04px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.badgeNeutral { background: rgba(0, 0, 51, 0.06);    color: rgba(0, 7, 20, 0.62); }
+.badgeTeal    { background: rgba(0, 194, 209, 0.13); color: #01959f; }
+.badgeTeal2   { background: rgba(0, 194, 209, 0.13); color: #008573; }
+.badgeAmber   { background: rgba(255, 222, 0, 0.24); color: #ab6400; }
+.badgeOrange  { background: rgba(255, 107, 21, 0.12); color: #bd4b00; }
+.badgeGreen   { background: rgba(0, 194, 160, 0.13); color: #018a6e; }
+.badgeViolet  { background: rgba(110, 86, 207, 0.1);  color: #6E56CF; }
+.badgeBlue    { background: rgba(0, 71, 241, 0.07);   color: rgba(0, 38, 130, 0.72); }
+
+/* Date + ref metadata */
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.cardMetaText {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 7, 20, 0.62);
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+/* Job title group */
+.cardTitleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cardJobTitle {
+  font-family: var(--font-base);
+  font-size: 18px;
+  font-weight: 700;
+  color: #1c2024;
+  line-height: 26px;
+  letter-spacing: -0.04px;
+  margin: 0;
+}
+
+.cardJobSub {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0, 7, 20, 0.62);
+  line-height: 16px;
+  letter-spacing: 0.04px;
+  margin: 0;
+}
+
+/* Description paragraph */
+.cardDesc {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 20px;
+  margin: 0;
+}
+
+/* ── Timeline (hiring process dots) ─────────────────────────────── */
+.timeline {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px; /* room for step label below */
+}
+
+.tlStep {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+/* First dot has no preceding line */
+.tlStep:first-child {
+  flex: 0 0 auto;
+}
+
+.tlLine {
+  flex: 1;
+  height: 2px;
+  background: rgba(0, 0, 47, 0.15);
+  border-radius: 9999px;
+}
+
+.tlDotWrap {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+/* CSS dot for "current" states */
+.tlDotCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tlDotTeal {
+  background: #3db9cf; /* "in-progress" teal */
+}
+
+.tlDotTeal::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #ffffff;
+}
+
+.tlDotAmber {
+  background: #ab6400;
+}
+
+.tlDotAmber::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #ffffff;
+}
+
+.tlDotViolet {
+  background: #6E56CF;
+}
+
+.tlDotViolet::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #ffffff;
+}
+
+/* Darker teal — assessment-complete */
+.tlDotTeal2 {
+  background: #007e88;
+}
+
+.tlDotTeal2::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #ffffff;
+}
+
+/* Blue — applied / application-received */
+.tlDotBlue {
+  background: #4863a5;
+}
+
+.tlDotBlue::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #ffffff;
+}
+
+
+/* ── Progress bar (draft / application progress) ─────────────────── */
+.progressArea {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.progressInfo {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.progressPct {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(0, 7, 20, 0.62);
+  line-height: 16px;
+  letter-spacing: 0.04px;
+}
+
+.progressBar {
+  height: 6px;
+  width: 100%;
+  background: rgba(0, 0, 51, 0.06);
+  border: 1px solid rgba(0, 0, 45, 0.09);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: #01959f;
+  border-radius: 9999px;
+}
+
+/* ── Card action buttons ─────────────────────────────────────────── */
+.cardActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: auto; /* always flush to card bottom */
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  background: transparent;
+  border: 1px solid rgba(0, 6, 46, 0.2);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: #60646c;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.12s;
+}
+
+.btnGhost:hover {
+  background: var(--page-bg);
+}
+
+.btnAmber {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  background: rgba(244, 209, 0, 0.09);
+  border: 1px solid rgba(220, 155, 0, 0.62);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: #ab6400;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s;
+}
+
+.btnAmber:hover {
+  background: rgba(244, 209, 0, 0.16);
+}
+
+.btnTeal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  background: #01959f;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: #f9f9fb;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.btnTeal:hover {
+  background: #017a83;
+}
+
+/* Success / offer-extended solid button */
+.btnGreen {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  background: var(--success);
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: #f9f9fb;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.btnGreen:hover {
+  background: var(--success-hover);
+}
+
+.btnGhostTeal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  background: rgba(0, 177, 177, 0.05);
+  border: 1px solid rgba(0, 155, 169, 0.5);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: #007e88;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.12s;
+}
+
+.btnGhostTeal:hover {
+  background: rgba(0, 177, 177, 0.1);
+}
+
+/* Violet ghost — "View Interview Details" */
+.btnGhostViolet {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  background: rgba(110, 86, 207, 0.06);
+  border: 1px solid rgba(110, 86, 207, 0.4);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: #6E56CF;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s;
+}
+
+.btnGhostViolet:hover {
+  background: rgba(110, 86, 207, 0.12);
+}
+
+/* Orange ghost — "Ask AI About Your Situation" */
+.btnGhostOrange {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  background: rgba(255, 107, 21, 0.06);
+  border: 1px solid rgba(229, 77, 46, 0.4);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: #bd4b00;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s;
+}
+
+.btnGhostOrange:hover {
+  background: rgba(255, 107, 21, 0.1);
+}
+
+/* Disabled ghost — "Insight Report Available on …" */
+.btnGhostDisabled {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  background: transparent;
+  border: 1px solid rgba(0, 6, 46, 0.15);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 7, 20, 0.4);
+  cursor: default;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Centered state cards ────────────────────────────────────────── */
+.stateCenter {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.stateCard {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 420px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.stateIconWrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconTeal  { background: rgba(0, 194, 209, 0.13); color: #01959f; }
+.iconError { background: rgba(229, 72, 77, 0.12); color: #e5484d; }
+
+.stateTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.stateTitle {
+  font-family: var(--font-base);
+  font-size: 18px;
+  font-weight: 700;
+  color: #1c2024;
+  line-height: 26px;
+  letter-spacing: -0.04px;
+  margin: 0;
+}
+
+.stateBody {
+  font-family: var(--font-base);
+  font-size: 16px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 24px;
+  margin: 0;
+}
+
+.stateLink {
+  color: #01959f;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.stateLink:hover {
+  text-decoration: underline;
+}
+
+.stateActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.statePrimaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 20px;
+  background: #01959f;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-base);
+  font-size: 16px;
+  font-weight: 500;
+  color: #f9f9fb;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.statePrimaryBtn:hover {
+  background: #017a83;
+}
+
+.stateGhostBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 20px;
+  background: rgba(0, 177, 177, 0.05);
+  border: 1px solid rgba(0, 155, 169, 0.5);
+  border-radius: 6px;
+  font-family: var(--font-base);
+  font-size: 16px;
+  font-weight: 500;
+  color: #007e88;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.stateGhostBtn:hover {
+  background: rgba(0, 177, 177, 0.1);
+}

@@ -1,0 +1,21 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-full);
+  font-family: var(--font-base);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.size-sm { font-size: var(--text-xs); padding: 2px var(--space-2); }
+.size-md { font-size: var(--text-sm); padding: 3px var(--space-3); }
+
+.variant-active   { background-color: var(--status-active-bg);   color: var(--status-active-text); }
+.variant-draft    { background-color: var(--status-draft-bg);    color: var(--status-draft-text); }
+.variant-inactive { background-color: var(--status-inactive-bg); color: var(--status-inactive-text); }
+.variant-urgent   { background-color: var(--state-urgent-bg);    color: var(--state-urgent-text); }
+.variant-resolved { background-color: var(--state-resolved-bg);  color: var(--state-resolved-text); }
+.variant-passive  { background-color: var(--state-passive-bg);   color: var(--state-passive-text); }
+.variant-error    { background-color: var(--state-error-bg);     color: var(--state-error-text); }
+.variant-brand    { background-color: var(--nav-active-bg);      color: var(--brand); }

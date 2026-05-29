@@ -1,0 +1,298 @@
+/* ── Page shell ──────────────────────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--page-bg);
+  overflow-y: auto;
+}
+
+/* ── Centered layout ─────────────────────────────────────────────────────── */
+.wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-6);
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border-alpha-header);
+  border-radius: 16px;
+  padding: var(--space-8);
+  width: 600px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Icon container ──────────────────────────────────────────────────────── */
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  border-radius: 50%;
+  background: var(--brand-surface);
+  border: 2.5px solid var(--brand-border-soft);
+  flex-shrink: 0;
+}
+
+.iconInner {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand);
+  overflow: hidden;
+}
+
+/* ── Text block ──────────────────────────────────────────────────────────── */
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+  width: 100%;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.1px;
+  line-height: var(--leading-snug);
+}
+
+.description {
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+  max-width: 420px;
+}
+
+/* ── Ref badge ───────────────────────────────────────────────────────────── */
+.refBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) 10px;
+  border-radius: var(--radius-sm);
+  background: var(--brand-tint);
+  font-family: var(--font-base);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--brand-mid);
+}
+
+/* ── Button group ────────────────────────────────────────────────────────── */
+.btnGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.btnPrimary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 32px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--brand);
+  color: var(--text-on-brand);
+  font-family: var(--font-base);
+  font-size: var(--text-base);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btnPrimary:hover {
+  background: var(--brand-mid);
+}
+
+.btnGhostTeal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 32px;
+  border: 1px solid var(--brand-border-soft);
+  border-radius: var(--radius-sm);
+  background: var(--brand-surface);
+  color: var(--brand-mid);
+  font-family: var(--font-base);
+  font-size: var(--text-base);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btnGhostTeal:hover {
+  background: var(--brand-surface-hover);
+  border-color: var(--brand);
+}
+
+/* ── Progress block (all-complete state) ─────────────────────────────────── */
+.progressBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--page-bg);
+  border: 1px solid var(--border-alpha-subtle);
+}
+
+.progressLabel {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.progressBarWrap {
+  width: 100%;
+  height: 6px;
+  background: var(--border-alpha-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--brand);
+  transition: width 0.6s ease;
+}
+
+.progressPct {
+  font-size: var(--text-xs);
+  color: var(--text-overlay-60);
+  font-weight: 500;
+}
+
+/* ── Info callout (insight not yet unlocked) ─────────────────────────────── */
+.infoBanner {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: var(--space-3) var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border-soft);
+  font-size: var(--text-sm);
+  color: var(--text-overlay-60);
+  line-height: var(--leading-relaxed);
+}
+
+.infoIcon {
+  color: var(--brand);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── FAB button (bottom-right chat) ──────────────────────────────────────── */
+.fab {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: var(--brand);
+  color: var(--text-on-brand);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  transition: background 0.15s;
+  z-index: 10;
+}
+
+.fab:hover {
+  background: var(--brand-mid);
+}
+
+/* ── Not-found state ─────────────────────────────────────────────────────── */
+.notFoundPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: var(--page-bg);
+  padding: var(--space-6);
+}
+
+.notFoundCard {
+  background: var(--surface);
+  border: 1px solid var(--border-alpha);
+  border-radius: 16px;
+  padding: var(--space-8);
+  max-width: 440px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+}
+
+.notFoundIconWrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--state-error-bg);
+  color: var(--recording);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notFoundTitle {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.notFoundBody {
+  font-size: var(--text-base);
+  color: var(--text-overlay-60);
+  line-height: var(--leading-loose);
+  margin: 0;
+}
+
+.notFoundBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 var(--space-4);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--brand);
+  color: var(--text-on-brand);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-base);
+  margin-top: var(--space-1);
+}

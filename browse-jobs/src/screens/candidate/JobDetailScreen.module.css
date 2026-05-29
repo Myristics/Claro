@@ -1,0 +1,647 @@
+/* JobDetailScreen.module.css */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: var(--page-bg);
+}
+
+/* ── Sticky header ───────────────────────────────────────────── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #ffffff;
+  box-shadow:
+    0px 4px 16px -8px rgba(0, 0, 0, 0.1),
+    0px 3px 12px -4px rgba(0, 0, 0, 0.1),
+    0px 2px 3px -2px rgba(0, 0, 51, 0.06);
+  padding: 16px 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.applyingFor {
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.applyingFor strong {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 6, 46, 0.2);
+  border-radius: 4px;
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: #60646c;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.backBtn:hover {
+  background: var(--page-bg);
+  border-color: rgba(0, 6, 46, 0.35);
+}
+
+/* ── Main content area ───────────────────────────────────────── */
+.content {
+  padding: 24px;
+  flex: 1;
+}
+
+/* Two-column grid: left 2fr (content), right 1fr (salary/apply) */
+.vacancyGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ── Left content card ───────────────────────────────────────── */
+.leftCard {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Company logo + title row */
+.jobHeader {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.companyLogoBox {
+  width: 72px;
+  height: 72px;
+  border: 1px solid rgba(0, 8, 48, 0.27);
+  border-radius: 4px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.jobTitleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.jobTitle {
+  font-family: var(--font-base);
+  font-size: 16px;
+  font-weight: 700;
+  color: #1c2024;
+  line-height: 24px;
+  margin: 0;
+}
+
+.jobCompany {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 20px;
+  margin: 0;
+}
+
+.jobMeta {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 20px;
+  margin: 0;
+}
+
+/* Horizontal rule divider */
+.cardSep {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 47, 0.15);
+  flex-shrink: 0;
+}
+
+/* Generic section wrapper */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ALL-CAPS section heading */
+.sectionLabel {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 700;
+  color: #1c2024;
+  letter-spacing: 0.04px;
+  line-height: 16px;
+  margin: 0;
+}
+
+/* Regular paragraph body */
+.sectionBody {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 16px;
+  letter-spacing: 0.04px;
+  margin: 0;
+}
+
+/* ── Hiring process steps ────────────────────────────────────── */
+.hiringSteps {
+  display: flex;
+  flex-direction: column;
+}
+
+/* One step row: [circle/connector] [content] */
+.hiringStep {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* Left column: number circle + vertical connector line */
+.stepIconCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 18px;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+.stepCircle {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: rgba(0, 194, 209, 0.13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stepNum {
+  font-family: var(--font-base);
+  font-size: 10px;
+  font-weight: 700;
+  color: #01959f;
+  line-height: 10px;
+}
+
+/* Vertical line linking steps */
+.stepConnector {
+  flex: 1;
+  width: 2px;
+  min-height: 8px;
+  background: rgba(0, 0, 47, 0.15);
+  border-radius: 9999px;
+}
+
+/* Right column: header (icon + label + badge) + description */
+.stepContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 8px;
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.stepIcon {
+  flex-shrink: 0;
+  color: #1c2024;
+}
+
+.stepLabel {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: #1c2024;
+  line-height: 20px;
+}
+
+.stepBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 6, 46, 0.2);
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0, 7, 20, 0.62);
+  line-height: 16px;
+  letter-spacing: 0.04px;
+  white-space: nowrap;
+}
+
+.stepDesc {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 16px;
+  letter-spacing: 0.04px;
+  margin: 0;
+}
+
+/* Requirements bullet list */
+.reqList {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reqList li {
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 16px;
+  letter-spacing: 0.04px;
+}
+
+/* ── Right salary / apply card ───────────────────────────────── */
+.rightCard {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 72px; /* clears the 64px header + 8px breathing room */
+}
+
+/* Salary block */
+.salarySection {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.salaryAmount {
+  font-family: var(--font-base);
+  font-size: 24px;
+  font-weight: 700;
+  color: #1c2024;
+  line-height: 30px;
+  letter-spacing: -0.1px;
+  margin: 0;
+}
+
+.salarySubtitle {
+  font-family: var(--font-base);
+  font-size: 16px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 24px;
+  margin: 0;
+}
+
+/* Deadline + positions badges */
+.badges {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.badgeWarning {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 222, 0, 0.24);
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 500;
+  color: #ab6400;
+  line-height: 16px;
+  letter-spacing: 0.04px;
+  white-space: nowrap;
+}
+
+.badgeBlue {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 71, 241, 0.07);
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0, 38, 130, 0.72);
+  line-height: 16px;
+  letter-spacing: 0.04px;
+  white-space: nowrap;
+}
+
+/* Meta info rows (Employment, Location, Process) */
+.metaRows {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.metaIcon {
+  color: #1c2024;
+  flex-shrink: 0;
+}
+
+.metaLabel {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 7, 20, 0.62);
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.metaValue {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 700;
+  color: #1c2024;
+  line-height: 20px;
+}
+
+/* Action buttons */
+.actionsArea {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Primary "Apply now" button */
+.applyBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 32px;
+  background: #01959f;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: #f9f9fb;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.applyBtn:hover {
+  background: #017a83;
+}
+
+/* Ghost "Save to profile" button */
+.saveBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 32px;
+  background: rgba(0, 177, 177, 0.05);
+  border: 1px solid rgba(0, 155, 169, 0.5);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: #007e88;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.saveBtn:hover {
+  background: rgba(0, 177, 177, 0.1);
+}
+
+/* Applied state (replaces buttons when user has applied) */
+.appliedState {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* "You have applied" — static outline button (no hover) */
+.appliedBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 32px;
+  background: transparent;
+  border: 1px solid rgba(0, 155, 169, 0.5);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: #007e88;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* "View your application status" — interactive ghost button */
+.viewStatusLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 32px;
+  background: rgba(0, 177, 177, 0.05);
+  border: 1px solid rgba(0, 155, 169, 0.5);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: #007e88;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.viewStatusLink:hover {
+  background: rgba(0, 177, 177, 0.1);
+  text-decoration: none;
+}
+
+/* ── Centered state cards (Error + Closed) ───────────────────── */
+.stateCenter {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.stateCard {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 16px;
+  padding: 40px;
+  width: 600px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  text-align: center;
+}
+
+/* Icon circle */
+.stateIconWrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconTeal {
+  background: rgba(0, 194, 209, 0.13);
+  color: #01959f;
+}
+
+.iconError {
+  background: rgba(229, 72, 77, 0.12);
+  color: #e5484d;
+}
+
+/* Title + body wrapper inside state card */
+.stateTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.stateTitle {
+  font-family: var(--font-base);
+  font-size: 18px;
+  font-weight: 700;
+  color: #1c2024;
+  line-height: 26px;
+  letter-spacing: -0.04px;
+  margin: 0;
+}
+
+.stateBody {
+  font-family: var(--font-base);
+  font-size: 16px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 24px;
+  margin: 0;
+}
+
+.stateLink {
+  color: #01959f;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.stateLink:hover {
+  text-decoration: underline;
+}
+
+/* Teal filled button (used for "Set up Job Alert") */
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+  padding: 0 16px;
+  background: #01959f;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-base);
+  font-size: 16px;
+  font-weight: 500;
+  color: #f9f9fb;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.primaryBtn:hover {
+  background: #017a83;
+}
+
+/* Ghost teal button (used for "Refresh page") */
+.refreshBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  background: rgba(0, 177, 177, 0.05);
+  border: 1px solid rgba(0, 155, 169, 0.5);
+  border-radius: 6px;
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 500;
+  color: #007e88;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.refreshBtn:hover {
+  background: rgba(0, 177, 177, 0.1);
+}

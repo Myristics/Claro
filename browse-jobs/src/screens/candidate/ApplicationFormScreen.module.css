@@ -1,0 +1,575 @@
+/* ============================================================
+   ApplicationFormScreen.module.css
+   ============================================================ */
+
+/* ── Page shell ─────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--page-bg);
+  overflow: hidden;
+}
+
+/* ── Top bar ────────────────────────────────────────────── */
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 52px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-light);
+  flex-shrink: 0;
+}
+
+.applyingFor {
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.applyingFor strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.saveExitBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: transparent;
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.saveExitBtn:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+  background: var(--page-bg);
+}
+
+/* ── Scrollable body ────────────────────────────────────── */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 24px 48px;
+}
+
+.inner {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Progress section ───────────────────────────────────── */
+.progressSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stepCount {
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+.nextHint {
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+}
+
+.nextHintTeal {
+  color: var(--brand);
+  font-weight: 500;
+}
+
+.progressTrack {
+  height: 4px;
+  background: var(--border-light);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--brand);
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+/* ── Info banner (autofill) ─────────────────────────────── */
+.infoBanner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #e8f5f6;
+  border-radius: var(--radius-md);
+  font-family: var(--font-base);
+  font-size: 13px;
+  color: var(--brand-mid);
+  line-height: 1.4;
+}
+
+.infoBannerIcon {
+  flex-shrink: 0;
+  color: var(--brand);
+}
+
+/* ── Error banner (submit fail) ─────────────────────────── */
+.errorBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--state-error-bg);
+  border-radius: var(--radius-md);
+  font-family: var(--font-base);
+  font-size: 13px;
+  color: var(--state-error-text);
+  line-height: 1.4;
+}
+
+.errorBannerIcon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.errorBannerLink {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-base);
+  font-size: 13px;
+  color: var(--state-error-text);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ── Card ───────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid rgba(0, 0, 47, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cardBody {
+  padding: 24px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+
+/* ── Card footer ────────────────────────────────────────── */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  border-top: 1px solid var(--border-light);
+  background: var(--surface);
+}
+
+/* ── Form field ─────────────────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.req {
+  color: var(--state-error-text);
+  margin-left: 2px;
+}
+
+.fieldError {
+  font-family: var(--font-base);
+  font-size: 12px;
+  color: var(--state-error-text);
+  line-height: 1.4;
+}
+
+/* ── Input ──────────────────────────────────────────────── */
+.input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 8, 48, 0.2);
+  border-radius: 6px;
+  background: var(--surface);
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: var(--text-disabled);
+}
+
+.input:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(1, 149, 159, 0.1);
+}
+
+.inputError {
+  border-color: var(--state-error-text) !important;
+}
+
+/* ── Select ─────────────────────────────────────────────── */
+.selectWrap {
+  position: relative;
+  width: 100%;
+}
+
+.select {
+  width: 100%;
+  height: 40px;
+  padding: 0 36px 0 12px;
+  border: 1px solid rgba(0, 8, 48, 0.2);
+  border-radius: 6px;
+  background: var(--surface);
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888780' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+
+.select:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(1, 149, 159, 0.1);
+}
+
+.select option[value=""] {
+  color: var(--text-disabled);
+}
+
+/* ── Upload zone ────────────────────────────────────────── */
+.uploadZone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 32px 24px;
+  border: 1.5px dashed rgba(0, 8, 48, 0.22);
+  border-radius: 8px;
+  background: var(--surface);
+  cursor: pointer;
+  text-align: center;
+  min-height: 120px;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.uploadZone:hover,
+.uploadZoneDrag {
+  border-color: var(--brand);
+  background: rgba(1, 149, 159, 0.04);
+}
+
+.uploadZoneFilled {
+  border-style: solid;
+  border-color: var(--brand);
+  background: rgba(1, 149, 159, 0.04);
+}
+
+.uploadZoneErr {
+  border-color: var(--state-error-text);
+  background: var(--state-error-bg);
+}
+
+.uploadIcon {
+  color: var(--text-tertiary);
+}
+
+.uploadText {
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.uploadBrowse {
+  color: var(--brand);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.uploadFileName {
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--brand-mid);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.uploadHint {
+  font-family: var(--font-base);
+  font-size: 12px;
+  color: var(--text-tertiary);
+  text-align: right;
+  display: block;
+}
+
+.fileErr {
+  font-family: var(--font-base);
+  font-size: 12px;
+  color: var(--state-error-text);
+  text-align: right;
+  display: block;
+}
+
+/* ── Textarea ───────────────────────────────────────────── */
+.textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(0, 8, 48, 0.2);
+  border-radius: 6px;
+  background: var(--surface);
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.5;
+  outline: none;
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+
+.textarea::placeholder {
+  color: var(--text-disabled);
+}
+
+.textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(1, 149, 159, 0.1);
+}
+
+.charCount {
+  font-family: var(--font-base);
+  font-size: 12px;
+  color: var(--text-tertiary);
+  text-align: right;
+  margin-top: -2px;
+}
+
+/* ── Footer buttons ─────────────────────────────────────── */
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid rgba(0, 8, 48, 0.2);
+  border-radius: 6px;
+  background: transparent;
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.backBtn:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
+.nextBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 6px;
+  background: var(--brand);
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.nextBtn:hover:not(.nextBtnDisabled) {
+  background: var(--brand-mid);
+}
+
+.nextBtnDisabled {
+  background: rgba(0, 8, 48, 0.08);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
+/* ── Exit modal backdrop ────────────────────────────────── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 24px;
+}
+
+/* ── Modal card ─────────────────────────────────────────── */
+.modal {
+  position: relative;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  width: 100%;
+  max-width: 420px;
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modalClose {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.modalClose:hover {
+  background: var(--page-bg);
+  color: var(--text-primary);
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-right: 24px;
+}
+
+.modalTitle {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.modalBody {
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.modalActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modalCancel {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 16px;
+  border: 1px solid rgba(0, 8, 48, 0.2);
+  border-radius: 6px;
+  background: transparent;
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.modalCancel:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
+.modalSave {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 6px;
+  background: var(--brand);
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.modalSave:hover {
+  background: var(--brand-mid);
+}

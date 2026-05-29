@@ -1,0 +1,666 @@
+/* ── Page shell ────────────────────────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--page-bg);
+  overflow: hidden;
+}
+
+/* ── Page header bar ─────────────────────────────────────────────────────── */
+.pageBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+  height: var(--topbar-height);
+  background: var(--header-bg-frosted);
+  border-bottom: 1px solid var(--border-alpha-header);
+  flex-shrink: 0;
+  gap: var(--space-4);
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-overlay-60);
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.backBtn:hover {
+  color: var(--text-primary);
+}
+
+.pageBarTitle {
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  color: var(--text-overlay-40);
+  margin: 0;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pageBarTitle strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ── Application closed card (inside scroll area) ────────────────────────── */
+.closedCard {
+  background: var(--surface);
+  border: 1px solid var(--border-alpha);
+  border-left: 5px solid var(--text-tertiary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.closedBannerRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.closedIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.closedBannerIcon {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.closedMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.closedLabel {
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.closedTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+
+.closedDot {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+}
+
+.closedMetaText {
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.closedBody {
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  color: var(--text-overlay-60);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* ── Scrollable content ──────────────────────────────────────────────────── */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-6) var(--space-6) var(--space-9);
+}
+
+.inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ── Main report card ────────────────────────────────────────────────────── */
+.reportCard {
+  background: var(--surface);
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* ── Report heading ──────────────────────────────────────────────────────── */
+.reportHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.reportTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+
+.reportSub {
+  font-family: var(--font-base);
+  font-size: var(--text-base);
+  color: var(--text-overlay-60);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+  max-width: 520px;
+}
+
+/* ── Archetype card ──────────────────────────────────────────────────────── */
+.archetypeCard {
+  background: var(--brand-surface);
+  border: 1.5px solid var(--brand-border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.archetypeLabelWrap {
+  display: flex;
+}
+
+.archetypeLabel {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px var(--space-3);
+  background: var(--brand-tint);
+  color: var(--brand-mid);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-base);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.archetypeName {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--brand-mid);
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+
+.archetypeDesc {
+  font-family: var(--font-base);
+  font-size: var(--text-base);
+  color: var(--text-overlay-60);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* ── Detailed insights section ───────────────────────────────────────────── */
+.insightSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.sectionLabelRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.sectionLabel {
+  font-family: var(--font-base);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-overlay-40);
+  letter-spacing: 1px;
+  margin: 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.sectionDivider {
+  flex: 1;
+  height: 1px;
+  background: var(--border-alpha-subtle);
+}
+
+/* ── Insight card — neutral shell, colour only in eyebrow + footer ───────── */
+.insightCard {
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);           /* ~20px, Figma spec: 19px */
+  border: 1px solid var(--border-alpha-header);
+  background: var(--surface);
+  padding: var(--space-4);       /* 16px all sides */
+}
+
+/* ── Header + body wrapper ───────────────────────────────────────────────── */
+.insightCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);           /* 8px between header and body */
+}
+
+/* ── Header row (eyebrow label + neutral badge) ──────────────────────────── */
+.insightCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+/* Eyebrow label — coloured per variant */
+.insightLabel {
+  font-family: var(--font-base);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.04px;
+  line-height: var(--leading-normal);
+  color: var(--text-overlay-40);
+}
+
+.insightLabelCognitive   { color: var(--insight-cognitive-text); }
+.insightLabelPersonality { color: var(--insight-personality-text); }
+.insightLabelWorking     { color: var(--insight-working-text); }
+
+/* Source badge — neutral for all variants */
+.insightBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: var(--font-base);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.04px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid var(--border-alpha-strong);
+  color: var(--text-overlay-60);
+}
+
+/* ── Card body (title + description) — neutral for all variants ──────────── */
+.insightCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);           /* 4px between title and desc */
+}
+
+.insightTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);     /* 18px — Figma fontSize/4 */
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+
+.insightDesc {
+  font-family: var(--font-base);
+  font-size: var(--text-base);   /* 14px */
+  color: var(--text-primary);    /* near-black — same as title */
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* ── Card footer — contained box with own border-radius, coloured bg ─────── */
+.insightCardFooter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);       /* 8px all sides */
+  border-radius: var(--radius-md); /* 6px — sits inside card padding */
+  background: var(--border-alpha-subtle);
+}
+
+.insightFooterCognitive   { background: var(--insight-cognitive-footer); }
+.insightFooterPersonality { background: var(--insight-personality-footer); }
+.insightFooterWorking     { background: var(--insight-working-footer); }
+
+/* Bulb icon — coloured per variant */
+.insightBulb {
+  flex-shrink: 0;
+  color: var(--text-overlay-40);
+}
+
+.insightIconCognitive   { color: var(--insight-cognitive-text); }
+.insightIconPersonality { color: var(--insight-personality-text); }
+.insightIconWorking     { color: var(--insight-working-text); }
+
+/* Tip text — coloured per variant */
+.insightTip {
+  font-family: var(--font-base);
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+  margin: 0;
+  color: var(--text-overlay-60);
+}
+
+.insightTipCognitive   { color: var(--insight-cognitive-text); }
+.insightTipPersonality { color: var(--insight-personality-text); }
+.insightTipWorking     { color: var(--insight-working-text); }
+
+/* ── Ask AI callout ──────────────────────────────────────────────────────── */
+.aiCallout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  border: 1.5px dashed var(--brand-border-soft);
+  border-radius: var(--radius-lg);
+  background: var(--brand-surface-faint);
+  flex-wrap: wrap;
+}
+
+.aiCalloutLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  min-width: 0;
+  flex: 1;
+}
+
+.aiCalloutIcon {
+  color: var(--brand);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.aiCalloutTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+}
+
+.aiCalloutBody {
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  color: var(--text-overlay-60);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.aiCalloutBtn {
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 var(--space-4);
+  background: var(--brand-surface-hover);
+  color: var(--brand-mid);
+  border: 1px solid var(--brand-border-soft);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.aiCalloutBtn:hover {
+  background: var(--brand-tint);
+}
+
+/* ── Continue your journey — card inside report card, centred content ────── */
+.continueCard {
+  background: var(--page-bg);
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.continueCardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.continueTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.continueSub {
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  color: var(--text-overlay-60);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+  max-width: 480px;
+}
+
+.continueBtns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.continueBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 34px;
+  padding: 0 var(--space-4);
+  background: var(--surface);
+  color: var(--text-overlay-60);
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.continueBtn:hover {
+  background: var(--page-bg);
+  border-color: var(--border-alpha-strong);
+}
+
+/* Primary surface variant — teal border + teal text */
+.continueBtnPrimary {
+  color: var(--brand);
+  border-color: var(--brand-border-soft);
+}
+
+.continueBtnPrimary:hover {
+  background: var(--brand-surface);
+  border-color: var(--brand-border-soft);
+}
+
+/* ── Loading state ───────────────────────────────────────────────────────── */
+.stateCenter {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+}
+
+.loadingContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.loadingTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+
+.loadingSub {
+  font-family: var(--font-base);
+  font-size: var(--text-base);
+  color: var(--text-overlay-60);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.progressBarWrap {
+  width: 100%;
+  height: 6px;
+  background: var(--border-alpha-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand-mid) 0%, var(--brand-accent) 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.18s ease-out;
+}
+
+.loadingCaption {
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  color: var(--text-overlay-40);
+  margin: 0;
+}
+
+/* ── Error / not-found state ─────────────────────────────────────────────── */
+.errorCard {
+  background: var(--surface);
+  border: 1px solid var(--border-alpha);
+  border-radius: 16px;
+  padding: var(--space-8);
+  max-width: 440px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+}
+
+.errorIconWrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--state-error-bg);
+  color: var(--recording);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lockedIconWrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--state-passive-bg);
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.errorBody {
+  font-family: var(--font-base);
+  font-size: var(--text-base);
+  color: var(--text-overlay-60);
+  line-height: var(--leading-loose);
+  margin: 0;
+}
+
+.errorLink {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-base);
+  font-size: inherit;
+  color: var(--brand);
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.refreshBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 36px;
+  padding: 0 var(--space-4);
+  background: var(--surface);
+  color: var(--text-overlay-60);
+  border: 1px solid var(--border-alpha);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.refreshBtn:hover {
+  background: var(--page-bg);
+  border-color: var(--border-alpha-strong);
+}

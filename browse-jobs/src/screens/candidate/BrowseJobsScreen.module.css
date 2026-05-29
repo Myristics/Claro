@@ -1,0 +1,633 @@
+/* ============================================================
+   BrowseJobsScreen — re-authored from Figma node 40:626
+   All values sourced from Figma design context.
+   ============================================================ */
+
+/* ── Page wrapper ──────────────────────────────────────────── */
+.page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: var(--page-bg);
+}
+
+.mainContent {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ── Page header ───────────────────────────────────────────── */
+/* Figma: frame 41:644 — Header block, 456×56 */
+.pageHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.pageTitle {
+  /* Figma: Typography/5/Bold — 20px / 700 / lh 28px / ls -0.08px */
+  font-family: var(--font-base);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -0.08px;
+  color: #1c2024; /* Figma: --tokens/colors/text */
+  margin: 0;
+}
+
+.pageSubtitle {
+  /* Figma: Typography/2/Regular — 14px / 400 / lh 20px */
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #1c2024;
+  margin: 0;
+}
+
+/* ── Filter bar ────────────────────────────────────────────── */
+/* Figma: frame 42:1461 — Filter Options, full width, h 32px */
+.filterBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.filterBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Search field ──────────────────────────────────────────── */
+/* Figma: TextField instance — 500px wide, 32px high */
+.searchField {
+  width: 500px;
+  flex-shrink: 0;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.9); /* Figma: --variables/misc/white-to-dark-2 */
+  border: 1px solid rgba(0, 8, 48, 0.27); /* Figma: --colors/neutral/neutralalpha/8 */
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  transition: border-color 0.15s;
+}
+
+.searchField:focus-within {
+  border-color: var(--brand);
+}
+
+.searchIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  flex-shrink: 0;
+  color: rgba(0, 5, 29, 0.45); /* Figma: --colors/neutral/neutralalpha/9 */
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #1c2024;
+  outline: none;
+  padding: 0 4px;
+}
+
+.searchInput::placeholder {
+  color: rgba(0, 5, 29, 0.45); /* Figma: --colors/neutral/neutralalpha/9 */
+}
+
+/* ── Filter chips ──────────────────────────────────────────── */
+.filterChips {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* Figma: gap between chips */
+}
+
+.chipWrapper {
+  position: relative;
+}
+
+/* Figma: Chip component — pill shape, 32px high */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  padding: 4px 12px;
+  border-radius: 9999px; /* Figma: --radius/full */
+  border: 1px solid #e8e8e8; /* Figma: --colors/custom_neutral/4 */
+  background: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #646464; /* Figma: --colors/custom_neutral/11 */
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.chip:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: var(--nav-active-bg);
+}
+
+.chipActive {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: var(--nav-active-bg);
+  font-weight: 500;
+}
+
+.chipIconRight {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.chipIconLeft {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+/* Chip dropdown */
+.chipDropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  z-index: 200;
+  min-width: 160px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chipDropdownRight {
+  left: auto;
+  right: 0;
+}
+
+.chipOption {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 7px 10px;
+  border-radius: 4px;
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  transition: background 0.1s, color 0.1s;
+}
+
+.chipOption:hover {
+  background: var(--page-bg);
+  color: var(--text-primary);
+}
+
+.chipOptionActive {
+  background: var(--nav-active-bg);
+  color: var(--brand);
+  font-weight: 500;
+}
+
+/* ── Dev state bar ─────────────────────────────────────────── */
+.devBar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.devBtn {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-tertiary);
+  font-family: inherit;
+  transition: background 0.1s, color 0.1s;
+}
+
+.devBtnActive {
+  background: var(--brand);
+  color: white;
+  border-color: var(--brand);
+}
+
+/* ── Job listings ──────────────────────────────────────────── */
+/* Figma: frame 42:2904 — Job Listings, rows of 2 cards */
+.jobListings {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Figma: gap between rows = spacing/5 = 24px, but actually 188-164=24 ✓ */
+}
+
+.jobRow {
+  display: flex;
+  gap: 24px; /* Figma: card gap = 598-574=24px */
+}
+
+.jobRowSpacer {
+  flex: 1; /* fills the empty second slot */
+}
+
+/* ── Job card ──────────────────────────────────────────────── */
+/* Figma: Card instance — 574×164px, radius 8px, pad 16px */
+.jobCard {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.8); /* Figma: --panel/default */
+  border: 1px solid rgba(0, 0, 47, 0.15); /* Figma: --colors/neutral/neutralalpha/6 */
+  border-radius: 8px; /* Figma: --radius/4 */
+  padding: 16px; /* Figma: --spacing/4 */
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Figma: gap between sections = --spacing/2 */
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  min-width: 0;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+}
+
+.jobCard:hover {
+  border-color: rgba(0, 155, 169, 0.5);
+  box-shadow: 0 2px 12px rgba(0, 0, 47, 0.08);
+}
+
+/* Card header row */
+/* Figma: frame 349:11368 — Header, flex row, gap 8px, items-start */
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.cardHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Figma: 349:11370 — Logo Container, 48×48, border, radius 4px, pad 4px */
+.logoContainer {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 8, 48, 0.27);
+  border-radius: 4px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  overflow: hidden;
+}
+
+.logoInitials {
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Figma: 349:11372 — Title Container, flex-col, gap 4px */
+.titleContainer {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+}
+
+.jobTitle {
+  /* Figma: Typography/3/Bold — 16px / 700 / lh 24px */
+  font-family: var(--font-base);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #1c2024;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.companyName {
+  /* Figma: Typography/2/Regular — 14px / 400 / lh 20px */
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #1c2024;
+  margin: 0;
+}
+
+/* Figma: 349:11376 — "View details" ghost button, h 24px */
+.viewDetailsBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 3px; /* Figma: --radius/1-max */
+  border: 1px solid rgba(0, 155, 169, 0.5); /* Figma: --colors/brand/primaryalpha/7 */
+  background: rgba(0, 177, 177, 0.05); /* Figma: --tokens/colors/primary-surface */
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.04px;
+  color: #007e88; /* Figma: --colors/brand/primaryalpha/11 */
+  white-space: nowrap;
+  flex-shrink: 0;
+  pointer-events: none; /* card itself is the link */
+}
+
+/* Info row: Type • Location • WorkMode */
+/* Figma: 349:11377 — Info Container, flex row, gap 4px */
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.infoText {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #1c2024;
+  white-space: nowrap;
+}
+
+.infoSep {
+  font-size: 14px;
+  color: rgba(28, 32, 36, 0.5);
+  flex-shrink: 0;
+}
+
+/* Badge rows */
+/* Figma: 349:11381 — Info Container (badges), flex row, gap 4px */
+.badgeRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+/* Figma: Badge — pad 2px 6px, radius 3px, flex row gap 6px */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.04px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Figma: mint green badge — salary */
+.badgeSalary {
+  background: rgba(0, 210, 158, 0.13); /* Figma: --colors/mintalpha/3 */
+  color: rgba(0, 119, 99, 0.99); /* Figma: --colors/mintalpha/11 */
+}
+
+/* Figma: blue badge — days, positions */
+.badgeBlue {
+  background: rgba(0, 71, 241, 0.07); /* Figma: --colors/bluealpha/3 */
+  color: rgba(0, 38, 130, 0.72); /* Figma: --colors/bluealpha/11 */
+}
+
+/* Figma: neutral gray badge — assessment includes */
+.badgeGray {
+  background: rgba(0, 0, 51, 0.06); /* Figma: --colors/neutral/neutralalpha/3 */
+  color: rgba(0, 7, 20, 0.62); /* Figma: --colors/neutral/neutralalpha/11 */
+}
+
+/* Includes row */
+/* Figma: 349:11385 — Includes Container, flex row, gap 4px, items-center */
+.includesRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.includesLabel {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #1c2024;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.includesBadges {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.closingDate {
+  /* Figma: 349:11398 — closing text, rgba(0,5,29,0.45) */
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgba(0, 5, 29, 0.45); /* Figma: --colors/neutral/neutralalpha/9 */
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* ── Skeleton cards (loading state) ────────────────────────── */
+.skeletonCard {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeletonHeaderRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skeletonTitleBlock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skeletonBadgeRow {
+  display: flex;
+  gap: 4px;
+}
+
+.skeletonIncludesRow {
+  display: flex;
+  gap: 4px;
+}
+
+/* ── Empty / Error states ──────────────────────────────────── */
+.stateCenter {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  min-height: 300px;
+}
+
+.stateBox {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 48px 40px;
+  max-width: 520px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.stateIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.stateIconBrand {
+  background: var(--nav-active-bg);
+  color: var(--brand);
+}
+
+.stateIconError {
+  background: var(--state-error-bg);
+  color: var(--state-error-text);
+}
+
+.stateTitle {
+  font-family: var(--font-base);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.stateBody {
+  font-family: var(--font-base);
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 360px;
+  margin: 0;
+}
+
+.stateActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.stateBtnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  background: var(--brand);
+  color: white;
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.stateBtnPrimary:hover {
+  background: #017a83;
+}
+
+.stateBtnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.stateBtnGhost:hover {
+  background: var(--page-bg);
+  color: var(--text-primary);
+}

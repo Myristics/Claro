@@ -1,0 +1,76 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.label {
+  font-family: var(--font-base);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.inputWrap {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background-color: var(--surface);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
+}
+
+.inputWrap:focus-within {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand) 15%, transparent);
+}
+
+.inputWrap.error {
+  border-color: var(--state-error-text);
+}
+
+.inputWrap.disabled {
+  background-color: var(--page-bg);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.prefix,
+.suffix {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-2);
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-base);
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  padding: 0 var(--space-3);
+}
+
+.input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.prefix + .input { padding-left: 0; }
+.suffix { padding-left: 0; }
+
+.errorMsg {
+  font-family: var(--font-base);
+  font-size: var(--text-xs);
+  color: var(--state-error-text);
+}

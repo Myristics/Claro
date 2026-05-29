@@ -1,0 +1,26 @@
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-family: var(--font-base);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.content {
+  flex: 1;
+}
+
+.variant-info    { background-color: var(--state-passive-bg);  color: var(--state-passive-text); }
+.variant-warning { background-color: var(--state-urgent-bg);   color: var(--state-urgent-text); }
+.variant-error   { background-color: var(--state-error-bg);    color: var(--state-error-text); }
+.variant-success { background-color: var(--state-resolved-bg); color: var(--state-resolved-text); }

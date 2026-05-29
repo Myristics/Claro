@@ -1,0 +1,510 @@
+/* ── Page shell ──────────────────────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--page-bg);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 47, 0.15);
+  box-shadow:
+    0 4px 16px -8px rgba(0, 0, 0, 0.1),
+    0 3px 12px -4px rgba(0, 0, 0, 0.1),
+    0 2px 3px -2px rgba(0, 0, 51, 0.06);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.headerLabel {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 7, 20, 0.62);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.headerJob {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1c2024;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.saveExitBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 6, 46, 0.2);
+  border-radius: 4px;
+  background: transparent;
+  color: #60646c;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  flex-shrink: 0;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.saveExitBtn:hover {
+  border-color: rgba(0, 6, 46, 0.4);
+  color: #1c2024;
+}
+
+/* ── Body ────────────────────────────────────────────────────────────────── */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inner {
+  width: 100%;
+  max-width: 850px;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 47, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 40px;
+  padding-bottom: 8px;
+}
+
+/* ── Title block ─────────────────────────────────────────────────────────── */
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 48px;
+  text-align: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1c2024;
+  line-height: 30px;
+  letter-spacing: -0.1px;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 24px;
+  margin: 0;
+}
+
+/* ── Sections ────────────────────────────────────────────────────────────── */
+.section {
+  padding: 0 40px;
+}
+
+/* ── Meeting details box ─────────────────────────────────────────────────── */
+.detailsBox {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid #d9d9e0;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detailsTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1c2024;
+  margin: 0;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.detailItem {
+  display: flex;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.detailIconWrap {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: rgba(0, 7, 20, 0.62);
+  margin-top: 2px;
+}
+
+.detailText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.detailLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 7, 20, 0.62);
+  line-height: 20px;
+}
+
+.detailValue {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1c2024;
+  line-height: 24px;
+}
+
+/* ── Meeting link card ───────────────────────────────────────────────────── */
+.linkCard {
+  background: rgba(0, 204, 204, 0.02);
+  border: 1px dashed rgba(0, 8, 48, 0.27);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.linkLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.linkIcon {
+  color: rgba(0, 7, 20, 0.62);
+  flex-shrink: 0;
+}
+
+.linkInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.linkLabel {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1c2024;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.linkUrl {
+  font-size: 14px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.linkActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 6, 46, 0.2);
+  border-radius: 4px;
+  background: transparent;
+  color: #60646c;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.copyBtn:hover {
+  border-color: rgba(0, 6, 46, 0.4);
+  color: #1c2024;
+}
+
+.joinBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 155, 169, 0.5);
+  border-radius: 4px;
+  background: rgba(0, 177, 177, 0.05);
+  color: #007e88;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.joinBtn:hover {
+  background: rgba(0, 177, 177, 0.1);
+}
+
+/* ── You'll meet with ────────────────────────────────────────────────────── */
+.sectionHeading {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1c2024;
+  margin: 0 0 16px;
+}
+
+.interviewerRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(0, 194, 209, 0.13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatarInitials {
+  font-size: 18px;
+  font-weight: 600;
+  color: #007e88;
+  line-height: 1;
+}
+
+.interviewerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+  justify-content: center;
+}
+
+.interviewerName {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1c2024;
+  line-height: 24px;
+}
+
+.interviewerTitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 20px;
+}
+
+.interviewerBio {
+  font-size: 14px;
+  font-weight: 400;
+  color: #1c2024;
+  line-height: 20px;
+  margin: 0;
+}
+
+/* ── Card footer — reschedule ────────────────────────────────────────────── */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 24px;
+  border-top: 1px solid rgba(0, 0, 47, 0.15);
+  background: #f9f9fb;
+  margin-top: 16px;
+}
+
+.rescheduleLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rescheduleIcon {
+  color: rgba(0, 7, 20, 0.62);
+  flex-shrink: 0;
+}
+
+.rescheduleText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rescheduleTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(0, 7, 20, 0.62);
+  line-height: 20px;
+}
+
+.rescheduleBody {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 7, 20, 0.62);
+  line-height: 20px;
+}
+
+.rescheduleBtn {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 8, 48, 0.27);
+  border-radius: 4px;
+  background: transparent;
+  color: #60646c;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.rescheduleBtn:hover {
+  border-color: rgba(0, 8, 48, 0.5);
+  color: #1c2024;
+}
+
+/* ── Page footer ─────────────────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid rgba(0, 0, 47, 0.15);
+  flex-shrink: 0;
+}
+
+.footerLeft {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footerIcon {
+  color: rgba(0, 7, 20, 0.62);
+  flex-shrink: 0;
+}
+
+.footerLabel {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(0, 7, 20, 0.62);
+  line-height: 20px;
+  margin-left: 4px;
+}
+
+.footerDate {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1c2024;
+  line-height: 20px;
+  margin-left: 4px;
+}
+
+.addCalBtn {
+  height: 40px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 6px;
+  background: #01959f;
+  color: #f9f9fb;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.addCalBtn:hover {
+  background: #018490;
+}
+
+/* ── Floating AI chat button ─────────────────────────────────────────────── */
+.chatFab {
+  position: absolute;
+  bottom: 96px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: #01959f;
+  color: #f9f9fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow:
+    0 4px 12px rgba(0, 149, 159, 0.35),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background 0.15s, transform 0.15s;
+  z-index: 10;
+}
+
+.chatFab:hover {
+  background: #018490;
+  transform: scale(1.06);
+}
