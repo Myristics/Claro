@@ -929,7 +929,7 @@ function PipelineTab({
                                 className={styles.dotsItem}
                                 onClick={() => {
                                   setDotsOpenId(null);
-                                  navigate(`/r/applications/${c.id}`, { state: { vacancyId: id } });
+                                  navigate(`/r/applications/${c.id}`, { state: { vacancyId: vacancyId } });
                                 }}
                               >
                                 View application

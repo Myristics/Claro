@@ -236,7 +236,7 @@ function getInitialGreeting(pathname: string, ctx: AppContext): string {
 //   2. When data is unavailable, say so honestly. Never guess.
 //   3. Forbidden patterns are already caught before this function runs.
 
-function getCannedResponse(input: string, pathname: string, ctx: AppContext): string {
+function getCannedResponse(input: string, _pathname: string, ctx: AppContext): string {
   const text = input.toLowerCase();
 
   // ── Stage / status ──────────────────────────────────────────
@@ -474,7 +474,7 @@ export default function AIChatOverlay() {
         content =
           'It looks like you might have more detailed questions. Would you like to connect with a human recruiter for a direct answer?';
       } else {
-        content = getCannedResponse(value, pathname, appCtx);
+        content = checkForbidden(value) ?? getCannedResponse(value, pathname, appCtx);
       }
 
       setMessages((m) => [
