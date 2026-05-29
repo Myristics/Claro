@@ -304,14 +304,10 @@ function JobCard({ job }: { job: Job }) {
 type PaginationProps = {
   page: number;
   totalPages: number;
-  total: number;
   onPage: (p: number) => void;
 };
 
-function Pagination({ page, totalPages, total, onPage }: PaginationProps) {
-  const from = (page - 1) * PAGE_SIZE + 1;
-  const to   = Math.min(page * PAGE_SIZE, total);
-
+function Pagination({ page, totalPages, onPage }: PaginationProps) {
   // Build page number list: always show first, last, current ±1, with ellipsis
   const pages: (number | '…')[] = [];
   for (let p = 1; p <= totalPages; p++) {
@@ -324,9 +320,6 @@ function Pagination({ page, totalPages, total, onPage }: PaginationProps) {
 
   return (
     <div className={styles.pagination}>
-      <span className={styles.paginationCount}>
-        Showing {from}–{to} of {total} position{total !== 1 ? 's' : ''}
-      </span>
       <div className={styles.paginationControls}>
         <button
           className={styles.pageBtn}
@@ -576,7 +569,6 @@ export default function BrowseJobsScreen() {
           <Pagination
             page={safePage}
             totalPages={totalPages}
-            total={filteredJobs.length}
             onPage={goToPage}
           />
         )}
