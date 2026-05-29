@@ -408,8 +408,11 @@ function TypingBubble() {
 export default function AIChatOverlay() {
   const { pathname } = useLocation();
   const applications = useStore((s) => s.applications) as Application[];
+  const chatOpen    = useStore((s) => s.chatOpen);
+  const setChatOpen = useStore((s) => s.setChatOpen);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const isOpen    = chatOpen;
+  const setIsOpen = setChatOpen;
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -616,7 +619,7 @@ export default function AIChatOverlay() {
       {/* ── Floating bubble trigger ────────────────────────────── */}
       <button
         className={styles.bubble}
-        onClick={() => setIsOpen((o) => !o)}
+        onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? 'Close AI chat' : 'Open AI chat'}
         aria-expanded={isOpen}
       >

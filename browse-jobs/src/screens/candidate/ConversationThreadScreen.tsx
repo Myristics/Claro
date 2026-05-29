@@ -6,7 +6,6 @@ import {
   IconX,
 } from '@tabler/icons-react';
 import { useStore } from '../../store/useStore';
-import { useToast } from '../../store/useToast';
 import styles from './ConversationThreadScreen.module.css';
 
 // ── Helpers ────────────────────────────────────────────────────────────────
@@ -49,9 +48,9 @@ function ChatFab({ onClick }: { onClick: () => void }) {
 export default function ConversationThreadScreen() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { showToast } = useToast();
 
   const conversations = useStore((s) => s.conversations);
+  const setChatOpen   = useStore((s) => s.setChatOpen);
   const conv = conversations.find((c) => c.id === id);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -59,8 +58,7 @@ export default function ConversationThreadScreen() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [conv?.messages.length]);
 
-  const fabAction = () =>
-    showToast({ message: 'Use the AI chat bubble on any page to continue.' });
+  const fabAction = () => setChatOpen(true);
 
   // ── Error state (conversation not found) ──────────────────────────────────
   if (!conv) {

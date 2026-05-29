@@ -106,6 +106,10 @@ interface StoreState {
   getConversationByApplication: (applicationId: string) => Conversation | undefined;
   createConversation: (applicationId: string, jobTitle: string, company: string) => Conversation;
 
+  // ── Chat overlay (global open/close) ─────────────────────────────────────
+  chatOpen: boolean;
+  setChatOpen: (open: boolean) => void;
+
   // ── Reset (for demo) ──────────────────────────────────────────────────────
   resetToInitial: () => void;
 }
@@ -120,6 +124,10 @@ export const useStore = create<StoreState>()(
       // ── View ────────────────────────────────────────────────────────────────
       activeView: 'candidate',
       setActiveView: (view) => set({ activeView: view }),
+
+      // ── Chat overlay ─────────────────────────────────────────────────────────
+      chatOpen: false,
+      setChatOpen: (open) => set({ chatOpen: open }),
 
       // ── Jobs ────────────────────────────────────────────────────────────────
       jobs: JOBS,
